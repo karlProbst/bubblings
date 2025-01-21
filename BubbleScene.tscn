@@ -1,0 +1,323 @@
+[gd_scene load_steps=6 format=3 uid="uid://q8ty5nuto45q"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_b63oi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o8oyq"]
+radius = 128.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ksdm2"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_13yhn"]
+material = SubResource("StandardMaterial3D_ksdm2")
+radius = 40.134
+height = 81.486
+radial_segments = 32
+rings = 4
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_brwkm"]
+radius = 40.0
+
+[node name="Bubble" type="Node2D"]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.160784, 0.439216, 1, 0.670588)
+polygon = PackedVector2Array(0, 0, 160, 96, 232, 256, 136, 392, 0, 488, -160, 416, -232, 256, -168, 96)
+
+[node name="Center" type="RigidBody2D" parent="."]
+position = Vector2(0, 256)
+collision_layer = 3
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_b63oi")
+can_sleep = false
+continuous_cd = 2
+contact_monitor = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Center"]
+shape = SubResource("CircleShape2D_o8oyq")
+
+[node name="CircleMask" type="MeshInstance2D" parent="Center"]
+clip_children = 1
+scale = Vector2(3.21403, 3.21403)
+mesh = SubResource("CapsuleMesh_13yhn")
+
+[node name="ColorRect" type="ColorRect" parent="Center/CircleMask"]
+clip_children = 2
+offset_left = -48.0
+offset_top = -41.0
+offset_right = -8.0
+offset_bottom = -1.0
+scale = Vector2(2.24, 2.04)
+color = Color(0, 1, 1, 1)
+
+[node name="Point1" type="RigidBody2D" parent="."]
+collision_layer = 3
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_b63oi")
+gravity_scale = 0.0
+can_sleep = false
+continuous_cd = 2
+contact_monitor = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Point1"]
+shape = SubResource("CircleShape2D_brwkm")
+
+[node name="CircleMask" type="MeshInstance2D" parent="Point1"]
+clip_children = 1
+mesh = SubResource("CapsuleMesh_13yhn")
+
+[node name="ColorRect" type="ColorRect" parent="Point1/CircleMask"]
+clip_children = 2
+offset_left = -48.0
+offset_top = -41.0
+offset_right = -8.0
+offset_bottom = -1.0
+scale = Vector2(2.24, 2.04)
+color = Color(0, 1, 1, 1)
+
+[node name="Point2" type="RigidBody2D" parent="."]
+position = Vector2(160, 96)
+collision_layer = 3
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_b63oi")
+gravity_scale = 0.0
+can_sleep = false
+continuous_cd = 2
+contact_monitor = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Point2"]
+shape = SubResource("CircleShape2D_brwkm")
+
+[node name="CircleMask" type="MeshInstance2D" parent="Point2"]
+clip_children = 1
+mesh = SubResource("CapsuleMesh_13yhn")
+
+[node name="ColorRect" type="ColorRect" parent="Point2/CircleMask"]
+clip_children = 2
+offset_left = -48.0
+offset_top = -41.0
+offset_right = -8.0
+offset_bottom = -1.0
+scale = Vector2(2.24, 2.04)
+color = Color(0, 1, 1, 1)
+
+[node name="Point3" type="RigidBody2D" parent="."]
+position = Vector2(232, 256)
+collision_layer = 3
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_b63oi")
+gravity_scale = 0.0
+can_sleep = false
+continuous_cd = 2
+contact_monitor = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Point3"]
+shape = SubResource("CircleShape2D_brwkm")
+
+[node name="CircleMask" type="MeshInstance2D" parent="Point3"]
+clip_children = 1
+mesh = SubResource("CapsuleMesh_13yhn")
+
+[node name="ColorRect" type="ColorRect" parent="Point3/CircleMask"]
+clip_children = 2
+offset_left = -48.0
+offset_top = -41.0
+offset_right = -8.0
+offset_bottom = -1.0
+scale = Vector2(2.24, 2.04)
+color = Color(0, 1, 1, 1)
+
+[node name="Point4" type="RigidBody2D" parent="."]
+position = Vector2(136, 392)
+collision_layer = 3
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_b63oi")
+gravity_scale = 0.0
+can_sleep = false
+continuous_cd = 2
+contact_monitor = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Point4"]
+shape = SubResource("CircleShape2D_brwkm")
+
+[node name="CircleMask" type="MeshInstance2D" parent="Point4"]
+clip_children = 1
+mesh = SubResource("CapsuleMesh_13yhn")
+
+[node name="ColorRect" type="ColorRect" parent="Point4/CircleMask"]
+clip_children = 2
+offset_left = -48.0
+offset_top = -41.0
+offset_right = -8.0
+offset_bottom = -1.0
+scale = Vector2(2.24, 2.04)
+color = Color(0, 1, 1, 1)
+
+[node name="Point5" type="RigidBody2D" parent="."]
+position = Vector2(0, 488)
+collision_layer = 3
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_b63oi")
+gravity_scale = 0.0
+can_sleep = false
+continuous_cd = 2
+contact_monitor = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Point5"]
+shape = SubResource("CircleShape2D_brwkm")
+
+[node name="CircleMask" type="MeshInstance2D" parent="Point5"]
+clip_children = 1
+mesh = SubResource("CapsuleMesh_13yhn")
+
+[node name="ColorRect" type="ColorRect" parent="Point5/CircleMask"]
+clip_children = 2
+offset_left = -48.0
+offset_top = -41.0
+offset_right = -8.0
+offset_bottom = -1.0
+scale = Vector2(2.24, 2.04)
+color = Color(0, 1, 1, 1)
+
+[node name="Point6" type="RigidBody2D" parent="."]
+position = Vector2(-160, 417)
+collision_layer = 3
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_b63oi")
+gravity_scale = 0.0
+can_sleep = false
+continuous_cd = 2
+contact_monitor = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Point6"]
+shape = SubResource("CircleShape2D_brwkm")
+
+[node name="CircleMask" type="MeshInstance2D" parent="Point6"]
+clip_children = 1
+mesh = SubResource("CapsuleMesh_13yhn")
+
+[node name="ColorRect" type="ColorRect" parent="Point6/CircleMask"]
+clip_children = 2
+offset_left = -48.0
+offset_top = -41.0
+offset_right = -8.0
+offset_bottom = -1.0
+scale = Vector2(2.24, 2.04)
+color = Color(0, 1, 1, 1)
+
+[node name="Point7" type="RigidBody2D" parent="."]
+position = Vector2(-232, 256)
+collision_layer = 3
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_b63oi")
+gravity_scale = 0.0
+can_sleep = false
+continuous_cd = 2
+contact_monitor = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Point7"]
+shape = SubResource("CircleShape2D_brwkm")
+
+[node name="CircleMask" type="MeshInstance2D" parent="Point7"]
+clip_children = 1
+mesh = SubResource("CapsuleMesh_13yhn")
+
+[node name="ColorRect" type="ColorRect" parent="Point7/CircleMask"]
+clip_children = 2
+offset_left = -48.0
+offset_top = -41.0
+offset_right = -8.0
+offset_bottom = -1.0
+scale = Vector2(2.24, 2.04)
+color = Color(0, 1, 1, 1)
+
+[node name="Point8" type="RigidBody2D" parent="."]
+position = Vector2(-168, 96)
+collision_layer = 3
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_b63oi")
+gravity_scale = 0.0
+can_sleep = false
+continuous_cd = 2
+contact_monitor = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Point8"]
+shape = SubResource("CircleShape2D_brwkm")
+
+[node name="CircleMask" type="MeshInstance2D" parent="Point8"]
+clip_children = 1
+mesh = SubResource("CapsuleMesh_13yhn")
+
+[node name="ColorRect" type="ColorRect" parent="Point8/CircleMask"]
+clip_children = 2
+offset_left = -48.0
+offset_top = -41.0
+offset_right = -8.0
+offset_bottom = -1.0
+scale = Vector2(2.24, 2.04)
+color = Color(0, 1, 1, 1)
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+modulate = Color(0.489879, 0.536505, 7.70092e-07, 1)
+self_modulate = Color(0.433496, 0.735832, 0, 1)
+position = Vector2(88, 41)
+node_a = NodePath("../Point1")
+node_b = NodePath("../Point2")
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="."]
+modulate = Color(0.489879, 0.536505, 7.70092e-07, 1)
+self_modulate = Color(0.433496, 0.735832, 0, 1)
+position = Vector2(202, 176)
+node_a = NodePath("../Point2")
+node_b = NodePath("../Point3")
+
+[node name="PinJoint2D3" type="PinJoint2D" parent="."]
+modulate = Color(0.489879, 0.536505, 7.70092e-07, 1)
+self_modulate = Color(0.433496, 0.735832, 0, 1)
+position = Vector2(184, 328)
+node_a = NodePath("../Point3")
+node_b = NodePath("../Point4")
+
+[node name="PinJoint2D4" type="PinJoint2D" parent="."]
+modulate = Color(0.489879, 0.536505, 7.70092e-07, 1)
+self_modulate = Color(0.433496, 0.735832, 0, 1)
+position = Vector2(64, 447)
+node_a = NodePath("../Point4")
+node_b = NodePath("../Point5")
+
+[node name="PinJoint2D5" type="PinJoint2D" parent="."]
+modulate = Color(0.489879, 0.536505, 7.70092e-07, 1)
+self_modulate = Color(0.433496, 0.735832, 0, 1)
+position = Vector2(-80, 456)
+node_a = NodePath("../Point5")
+node_b = NodePath("../Point6")
+
+[node name="PinJoint2D6" type="PinJoint2D" parent="."]
+modulate = Color(0.489879, 0.536505, 7.70092e-07, 1)
+self_modulate = Color(0.433496, 0.735832, 0, 1)
+position = Vector2(-200, 336)
+node_a = NodePath("../Point6")
+node_b = NodePath("../Point7")
+
+[node name="PinJoint2D8" type="PinJoint2D" parent="."]
+modulate = Color(0.489879, 0.536505, 7.70092e-07, 1)
+self_modulate = Color(0.433496, 0.735832, 0, 1)
+position = Vector2(-96, 24)
+node_a = NodePath("../Point8")
+node_b = NodePath("../Point1")
+
+[node name="PinJoint2D7" type="PinJoint2D" parent="."]
+modulate = Color(0.489879, 0.536505, 7.70092e-07, 1)
+self_modulate = Color(0.433496, 0.735832, 0, 1)
+position = Vector2(-216, 168)
+node_a = NodePath("../Point7")
+node_b = NodePath("../Point8")

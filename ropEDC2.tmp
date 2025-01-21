@@ -1,0 +1,141 @@
+[gd_scene load_steps=3 format=3 uid="uid://drm6rtfp4x1b8"]
+
+[ext_resource type="PackedScene" uid="uid://wt8pc14oc5ie" path="res://Point.tscn" id="1_0nn2w"]
+[ext_resource type="Script" path="res://PolygonMap.gd" id="1_qp7vh"]
+
+[node name="Rope" type="Node2D"]
+script = ExtResource("1_qp7vh")
+
+[node name="Center" parent="." instance=ExtResource("1_0nn2w")]
+collision_mask = 2
+mass = 0.5
+gravity_scale = -1.0
+
+[node name="CenterJoint2D" type="PinJoint2D" parent="Center"]
+position = Vector2(0, -32)
+node_a = NodePath("..")
+node_b = NodePath("../../Point1")
+softness = 16.0
+
+[node name="CenterJoint2D2" type="PinJoint2D" parent="Center"]
+position = Vector2(24, -24)
+node_a = NodePath("..")
+node_b = NodePath("../../Point2")
+softness = 16.0
+
+[node name="CenterJoint2D3" type="PinJoint2D" parent="Center"]
+position = Vector2(30, 0)
+node_a = NodePath("..")
+node_b = NodePath("../../Point3")
+softness = 16.0
+
+[node name="CenterJoint2D4" type="PinJoint2D" parent="Center"]
+position = Vector2(24, 24)
+node_a = NodePath("..")
+node_b = NodePath("../../Point4")
+softness = 16.0
+
+[node name="CenterJoint2D5" type="PinJoint2D" parent="Center"]
+position = Vector2(0, 32)
+node_a = NodePath("..")
+node_b = NodePath("../../Point5")
+softness = 16.0
+
+[node name="CenterJoint2D6" type="PinJoint2D" parent="Center"]
+position = Vector2(-24, 24)
+node_a = NodePath("..")
+node_b = NodePath("../../Point6")
+softness = 16.0
+
+[node name="CenterJoint2D7" type="PinJoint2D" parent="Center"]
+position = Vector2(-32, 0)
+node_a = NodePath("..")
+node_b = NodePath("../../Point7")
+softness = 16.0
+
+[node name="CenterJoint2D8" type="PinJoint2D" parent="Center"]
+position = Vector2(-24, -24)
+node_a = NodePath("..")
+node_b = NodePath("../../Point8")
+softness = 16.0
+
+[node name="Point1" parent="." instance=ExtResource("1_0nn2w")]
+position = Vector2(0, -64)
+collision_mask = 2
+gravity_scale = 1.0
+
+[node name="Point2" parent="." instance=ExtResource("1_0nn2w")]
+position = Vector2(40, -40)
+collision_mask = 2
+
+[node name="Point3" parent="." instance=ExtResource("1_0nn2w")]
+position = Vector2(64, 0)
+collision_mask = 2
+
+[node name="Point4" parent="." instance=ExtResource("1_0nn2w")]
+position = Vector2(40, 40)
+collision_mask = 2
+
+[node name="Point5" parent="." instance=ExtResource("1_0nn2w")]
+position = Vector2(0, 64)
+collision_mask = 2
+
+[node name="Point6" parent="." instance=ExtResource("1_0nn2w")]
+position = Vector2(-40, 40)
+collision_mask = 2
+
+[node name="Point7" parent="." instance=ExtResource("1_0nn2w")]
+position = Vector2(-64, 0)
+collision_mask = 2
+
+[node name="Point8" parent="." instance=ExtResource("1_0nn2w")]
+position = Vector2(-40, -40)
+collision_mask = 2
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(24, -56)
+node_a = NodePath("../Point1")
+node_b = NodePath("../Point2")
+disable_collision = false
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="."]
+position = Vector2(54, -16)
+node_a = NodePath("../Point2")
+node_b = NodePath("../Point3")
+disable_collision = false
+
+[node name="PinJoint2D3" type="PinJoint2D" parent="."]
+position = Vector2(54, 24)
+node_a = NodePath("../Point3")
+node_b = NodePath("../Point4")
+disable_collision = false
+
+[node name="PinJoint2D4" type="PinJoint2D" parent="."]
+position = Vector2(24, 56)
+node_a = NodePath("../Point4")
+node_b = NodePath("../Point5")
+disable_collision = false
+
+[node name="PinJoint2D5" type="PinJoint2D" parent="."]
+position = Vector2(-24, 56)
+node_a = NodePath("../Point5")
+node_b = NodePath("../Point6")
+disable_collision = false
+
+[node name="PinJoint2D6" type="PinJoint2D" parent="."]
+position = Vector2(-56, 24)
+node_a = NodePath("../Point6")
+node_b = NodePath("../Point7")
+disable_collision = false
+
+[node name="PinJoint2D7" type="PinJoint2D" parent="."]
+position = Vector2(-56, -24)
+node_a = NodePath("../Point7")
+node_b = NodePath("../Point8")
+disable_collision = false
+
+[node name="PinJoint2D8" type="PinJoint2D" parent="."]
+position = Vector2(-24, -56)
+node_a = NodePath("../Point8")
+node_b = NodePath("../Point1")
+disable_collision = false

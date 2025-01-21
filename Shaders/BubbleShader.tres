@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bu86vw5e8ctir"]
+
+[ext_resource type="Shader" path="res://Shaders/BubbleShader.gdshader" id="1_6u5r6"]
+
+[resource]
+shader = ExtResource("1_6u5r6")

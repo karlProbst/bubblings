@@ -1,0 +1,138 @@
+[gd_scene load_steps=19 format=3 uid="uid://bi7h85sd11d31"]
+
+[ext_resource type="Texture2D" uid="uid://cxfqcei1i57pw" path="res://Assets/Images/icon.svg" id="1_em87f"]
+[ext_resource type="Script" path="res://node_2d.gd" id="1_uo6d2"]
+[ext_resource type="Shader" path="res://Shaders/BubbleShadder.gdshader" id="3_26n41"]
+[ext_resource type="Material" uid="uid://bu86vw5e8ctir" path="res://Shaders/BubbleShader.tres" id="3_f0qdc"]
+[ext_resource type="PackedScene" uid="uid://drm6rtfp4x1b8" path="res://rope.tscn" id="4_7txjl"]
+[ext_resource type="Script" path="res://Scripts/PolygonMap.gd" id="5_1r35s"]
+
+[sub_resource type="Gradient" id="Gradient_s4jan"]
+interpolation_mode = 2
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0, 0.16777, 0.375276, 1)
+colors = PackedColorArray(1, 0.643137, 0.454902, 1, 0.972549, 0.717647, 1, 1, 0.831373, 0.717647, 1, 1, 0.156863, 0.129412, 0.513726, 1)
+metadata/_snap_count = 9
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_enh0r"]
+gradient = SubResource("Gradient_s4jan")
+fill = 1
+fill_from = Vector2(0.508547, 1)
+fill_to = Vector2(0.508547, 0)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_03fni"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fshhn"]
+shader = ExtResource("3_26n41")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwvew"]
+atlas = ExtResource("1_em87f")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0tji"]
+atlas = ExtResource("1_em87f")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63ceo"]
+atlas = ExtResource("1_em87f")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsip6"]
+atlas = ExtResource("1_em87f")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rh0gj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwvew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0tji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_63ceo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsip6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dgifk"]
+size = Vector2(690, 178)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g77oc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3vpjd"]
+radius = 72.4431
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_uo6d2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(640, 368)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Camera2D"]
+offset_left = -632.0
+offset_top = -360.0
+offset_right = 648.0
+offset_bottom = 356.0
+texture = SubResource("GradientTexture2D_enh0r")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(128, 576)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, -15)
+shape = SubResource("CapsuleShape2D_03fni")
+
+[node name="Icon" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(0, -21)
+scale = Vector2(0.335938, 0.335938)
+texture = ExtResource("1_em87f")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+material = SubResource("ShaderMaterial_fshhn")
+position = Vector2(0, -32)
+sprite_frames = SubResource("SpriteFrames_rh0gj")
+frame = 3
+frame_progress = 0.163432
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+
+[node name="Polygon2D" type="Polygon2D" parent="Area2D"]
+color = Color(0.0941176, 0.34902, 0.317647, 1)
+polygon = PackedVector2Array(1264, 688, 1128, 656, 976, 640, 768, 632, 536, 640, 320, 656, 136, 680, 16, 680, -48, 664, -120, 696, -128, 768, 1360, 768)
+
+[node name="Polygon2D2" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(1264, 688, 1128, 656, 976, 640, 768, 632, 536, 640, 320, 656, 136, 680, 16, 680, -48, 664, -120, 696, -128, 768, 1360, 768)
+
+[node name="Bubble" parent="." instance=ExtResource("4_7txjl")]
+material = ExtResource("3_f0qdc")
+position = Vector2(656, 656)
+script = ExtResource("5_1r35s")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(328, 8)
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(335, 79)
+shape = SubResource("RectangleShape2D_dgifk")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(808, 504)
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_g77oc")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-136, -208)
+shape = SubResource("CircleShape2D_3vpjd")
