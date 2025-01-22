@@ -1,12 +1,22 @@
 extends Area2D
 
-@export var air_force: Vector2 = Vector2(1,0)
+# List to keep track of bodies currently in the area
+var bodies_in_area = []
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+@export var force: Vector2 = Vector2(0, -0.1)  # Adjust the force as needed
+
+func _on_body_entered(body: Node2D) -> void:
+	if body is RigidBody2D and body not in bodies_in_area:
+		bodies_in_area.append(body)  # Add body to the list
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_body_exited(body: Node2D) -> void:
+	bodies_in_area.erase(body)  # Remove body from the list
+
+
+func _physics_process(delta: float) -> void:
+
+	# Continuously apply forces to bodies in the area
+	for body in bodies_in_area:
+		if body:
+			body.apply_central_impulse(force)

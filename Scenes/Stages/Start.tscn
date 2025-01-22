@@ -1,9 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://07c7wnt7vdll"]
+[gd_scene load_steps=17 format=3 uid="uid://07c7wnt7vdll"]
 
 [ext_resource type="Texture2D" uid="uid://bi2m5egvtx4nn" path="res://Assets/Images/opening/Sky.png" id="1_d4ocg"]
 [ext_resource type="Texture2D" uid="uid://camxoooubjhdt" path="res://Assets/Images/opening/text.png" id="2_dyb2f"]
 [ext_resource type="Script" path="res://Scripts/sky.gd" id="2_kc0nj"]
-[ext_resource type="Texture2D" uid="uid://dcn1gu0d1dert" path="res://Assets/Images/redpainttrated.png" id="4_61jni"]
+[ext_resource type="PackedScene" uid="uid://5wx1jom1euav" path="res://Scenes/pombo_da_praca.tscn" id="4_70typ"]
+[ext_resource type="Texture2D" uid="uid://c2n6qdfg0i23s" path="res://Assets/Images/coquim.png" id="5_2m5dg"]
+[ext_resource type="AudioStream" uid="uid://tb218hr4u014" path="res://gelatina.mp3" id="6_xd4n1"]
 
 [sub_resource type="Animation" id="Animation_bbrxk"]
 length = 0.001
@@ -41,6 +43,18 @@ tracks/2/keys = {
 "points": PackedFloat32Array(-272, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PomboDaPraca:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-141, 554)]
+}
 
 [sub_resource type="Animation" id="Animation_vtefd"]
 resource_name = "new_animation"
@@ -59,6 +73,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_6lol3"]
 resource_name = "new_animation_2"
+length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -70,6 +85,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(246, 853), Vector2(242.845, 529)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PomboDaPraca:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4.06667),
+"transitions": PackedFloat32Array(1, 1.56917),
+"update": 0,
+"values": [Vector2(-481.92, 300), Vector2(904.235, 653.39)]
 }
 
 [sub_resource type="Animation" id="Animation_r6q3u"]
@@ -99,7 +126,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_fngnn"]
 resource_name = "new_animation_4"
-length = 10.0
+length = 5.0
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = false
@@ -118,9 +145,9 @@ tracks/1/path = NodePath("Sky:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(-272, -0.25, 0, 0.25, 0, -3969, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 9.96667)
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-272, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -1000, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 4.96667, 9.96667)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_82rq0"]
@@ -198,8 +225,18 @@ rotation = -1.5708
 scale = Vector2(8.68, 47.7149)
 texture = SubResource("GradientTexture2D_r4q6h")
 
+[node name="PomboDaPraca" parent="." instance=ExtResource("4_70typ")]
+position = Vector2(-141, 554)
+rotation = 0.261799
+scale = Vector2(0.876877, 0.881096)
+autoplay = "Flying"
+frame_progress = 0.546072
+speed_scale = 1.87
+
 [node name="Ball" type="RigidBody2D" parent="." groups=["ball"]]
-position = Vector2(819, 461)
+z_index = 5
+z_as_relative = false
+position = Vector2(184, -21)
 collision_layer = 3
 collision_mask = 3
 mass = 0.952
@@ -217,11 +254,14 @@ position = Vector2(-8, 15)
 scale = Vector2(0.889441, 0.889441)
 polygon = PackedVector2Array(20, 10, 32, -2, 34, -17, 24, -36, 3, -40, -13, -30, -18, -14, -14, 2, 2, 12)
 
-[node name="Sprite2D" type="Sprite2D" parent="Ball/fdsdf"]
-clip_children = 2
-position = Vector2(2.50002, -36)
-scale = Vector2(0.200521, 0.139355)
-texture = ExtResource("4_61jni")
+[node name="Coquim" type="Sprite2D" parent="Ball/fdsdf"]
+position = Vector2(1.12431, -6.74582)
+scale = Vector2(0.127473, 0.127473)
+texture = ExtResource("5_2m5dg")
+
+[node name="Gelatina" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-312, 549)
+stream = ExtResource("6_xd4n1")
 
 [connection signal="animation_finished" from="Sky/AnimationPlayer" to="Sky" method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="Sky/PlayButton" to="Sky" method="_on_play_button_pressed"]

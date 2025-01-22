@@ -64,6 +64,9 @@ func should_explode() -> bool:
 
 # Trigger the explosion
 func explode():
+	var sound = preload("res://Assets/Sound/bup.mp3")  # Replace with your sound file's path
+	play_sound_effect(sound, self.global_position)
+
 	print("Bubble exploded!")
 	queue_free()
 
@@ -117,3 +120,21 @@ func subdivide_polygon(vertices: Array, subdivisions: int) -> Array:
 func _on_center_body_entered(body: Node) -> void:
 	if not body.is_in_group("ball"):
 		exploded=true
+
+
+func play_sound_effect(sound: AudioStream, position: Vector2) -> void:
+	# Create a new AudioStreamPlayer2D instance
+	var sound_player = AudioStreamPlayer2D.new()
+
+	# Set the sound stream and position
+	sound_player.stream = sound
+	sound_player.global_position = position
+	sound_player
+	# Add the sound player to the current scene tree
+	get_parent().add_child(sound_player)
+	print(sound_player)
+	# Play the sound
+	sound_player.play()
+
+	# Queue the sound player for deletion after it finishes playing
+	sound_player.connect("finished", Callable(sound_player, "queue_free"))
