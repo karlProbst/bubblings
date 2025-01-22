@@ -14,9 +14,11 @@ var subdivisions: int = 2
 var exploded=false
 # Called when the node enters the scene tree
 func _ready():
+	
 	NodePoints.append($Center)
 	for child in get_children():
 		if child.name.begins_with("Point") and child is RigidBody2D:
+			child.get_child(0).scale=$Center.scale
 			NodePoints.append(child)
 			
 
@@ -113,4 +115,5 @@ func subdivide_polygon(vertices: Array, subdivisions: int) -> Array:
 
 
 func _on_center_body_entered(body: Node) -> void:
-	exploded=true
+	if not body.is_in_group("ball"):
+		exploded=true

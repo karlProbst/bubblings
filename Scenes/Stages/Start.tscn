@@ -1,0 +1,229 @@
+[gd_scene load_steps=15 format=3 uid="uid://07c7wnt7vdll"]
+
+[ext_resource type="Texture2D" uid="uid://bi2m5egvtx4nn" path="res://Assets/Images/opening/Sky.png" id="1_d4ocg"]
+[ext_resource type="Texture2D" uid="uid://camxoooubjhdt" path="res://Assets/Images/opening/text.png" id="2_dyb2f"]
+[ext_resource type="Script" path="res://Scripts/sky.gd" id="2_kc0nj"]
+[ext_resource type="Texture2D" uid="uid://dcn1gu0d1dert" path="res://Assets/Images/redpainttrated.png" id="4_61jni"]
+
+[sub_resource type="Animation" id="Animation_bbrxk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sky:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(241, 1209)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sky:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(243, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sky:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-272, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_vtefd"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sky:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.366021, 1),
+"update": 0,
+"values": [Vector2(241, 1209), Vector2(246, 853)]
+}
+
+[sub_resource type="Animation" id="Animation_6lol3"]
+resource_name = "new_animation_2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sky:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(246, 853), Vector2(242.845, 529)]
+}
+
+[sub_resource type="Animation" id="Animation_r6q3u"]
+resource_name = "new_animation_3"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Sky:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(242.845, -0.25, 0, 0.25, 0, 243, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sky:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(529, -0.25, 0, 0.25, 0, -272, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_fngnn"]
+resource_name = "new_animation_4"
+length = 10.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Sky:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(243, -0.25, 0, 0.25, 0, 207, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 9.96667)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sky:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-272, -0.25, 0, 0.25, 0, -3969, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 9.96667)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_82rq0"]
+_data = {
+"RESET": SubResource("Animation_bbrxk"),
+"new_animation": SubResource("Animation_vtefd"),
+"new_animation_2": SubResource("Animation_6lol3"),
+"new_animation_3": SubResource("Animation_r6q3u"),
+"new_animation_4": SubResource("Animation_fngnn")
+}
+
+[sub_resource type="Gradient" id="Gradient_6560r"]
+offsets = PackedFloat32Array(0, 0.582555, 1)
+colors = PackedColorArray(0.933333, 0.67451, 0.321569, 1, 1, 0.533333, 0.239216, 1, 0.376466, 0.181339, 9.62615e-08, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r4q6h"]
+gradient = SubResource("Gradient_6560r")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6ls6l"]
+friction = 0.8
+rough = true
+bounce = 0.64
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gjn0s"]
+radius = 18.1108
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sky" type="Sprite2D" parent="."]
+position = Vector2(243, -272)
+rotation = 1.57079
+scale = Vector2(1.18304, 1.18304)
+texture = ExtResource("1_d4ocg")
+script = ExtResource("2_kc0nj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sky"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_82rq0")
+}
+autoplay = "new_animation"
+
+[node name="Text" type="Sprite2D" parent="Sky"]
+position = Vector2(438.701, 2.5368)
+scale = Vector2(0.845281, 0.845281)
+texture = ExtResource("2_dyb2f")
+
+[node name="PlayButton" type="Button" parent="Sky"]
+offset_left = -107.351
+offset_top = 35.5016
+offset_right = -59.3508
+offset_bottom = 89.5016
+rotation = -1.5708
+text = "Play?
+
+"
+
+[node name="GotButton" type="Button" parent="Sky"]
+offset_left = 167.366
+offset_top = 49.8719
+offset_right = 223.366
+offset_bottom = 103.872
+rotation = -1.5708
+text = "Got It!
+
+"
+
+[node name="TextureRect" type="TextureRect" parent="Sky"]
+offset_left = 1005.88
+offset_top = 262.885
+offset_right = 1069.88
+offset_bottom = 326.885
+rotation = -1.5708
+scale = Vector2(8.68, 47.7149)
+texture = SubResource("GradientTexture2D_r4q6h")
+
+[node name="Ball" type="RigidBody2D" parent="." groups=["ball"]]
+position = Vector2(819, 461)
+collision_layer = 3
+collision_mask = 3
+mass = 0.952
+physics_material_override = SubResource("PhysicsMaterial_6ls6l")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+light_mask = 3
+visibility_layer = 0
+shape = SubResource("CircleShape2D_gjn0s")
+
+[node name="fdsdf" type="Polygon2D" parent="Ball"]
+clip_children = 1
+position = Vector2(-8, 15)
+scale = Vector2(0.889441, 0.889441)
+polygon = PackedVector2Array(20, 10, 32, -2, 34, -17, 24, -36, 3, -40, -13, -30, -18, -14, -14, 2, 2, 12)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball/fdsdf"]
+clip_children = 2
+position = Vector2(2.50002, -36)
+scale = Vector2(0.200521, 0.139355)
+texture = ExtResource("4_61jni")
+
+[connection signal="animation_finished" from="Sky/AnimationPlayer" to="Sky" method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="Sky/PlayButton" to="Sky" method="_on_play_button_pressed"]
+[connection signal="pressed" from="Sky/GotButton" to="Sky" method="_on_got_button_pressed"]
+[connection signal="pressed" from="Sky/GotButton" to="Sky" method="_on_button_pressed"]

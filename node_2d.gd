@@ -12,7 +12,11 @@ func _process(delta: float) -> void:
 	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		
 		if mouse_was_pressed:
-			var mouse_position = get_viewport().get_mouse_position()
+			var window_size = DisplayServer.window_get_size()
+			var width = window_size.x
+			var height = window_size.y
+			var mouse_position = get_viewport().get_mouse_position()+$Camera2D.position-(Vector2(width/2,height/2))
+
 		
 			# Instantiate the scene
 			var new_bubble = create_bubble(mouse_position,growth)
@@ -38,5 +42,5 @@ func create_bubble(position: Vector2,growth:float) -> Node2D:
 	var bubble_instance = bubble_scene.instantiate()
 	# Set the bubble's position
 	bubble_instance.position = position
-	bubble_instance.scale = Vector2(1,1)
+	bubble_instance.scale = Vector2(0.6,0.6)
 	return bubble_instance

@@ -1,0 +1,361 @@
+[gd_scene load_steps=22 format=3 uid="uid://bi7h85sd11d31"]
+
+[ext_resource type="Script" path="res://node_2d.gd" id="1_xdb2r"]
+[ext_resource type="Script" path="res://camera_2d.gd" id="2_24beq"]
+[ext_resource type="Material" uid="uid://bu86vw5e8ctir" path="res://Shaders/BubbleShader.tres" id="3_8jk6p"]
+[ext_resource type="Script" path="res://Scripts/MainBubble.gd" id="4_jicwq"]
+[ext_resource type="Script" path="res://Center.gd" id="5_vgumk"]
+[ext_resource type="PackedScene" uid="uid://wt8pc14oc5ie" path="res://Point.tscn" id="6_qei3c"]
+[ext_resource type="Script" path="res://area_2d.gd" id="7_qbucb"]
+[ext_resource type="Texture2D" uid="uid://dcn1gu0d1dert" path="res://Assets/Images/redpainttrated.png" id="8_bdydn"]
+[ext_resource type="AudioStream" uid="uid://d0s7m1sggcu3u" path="res://Assets/Sound/uihhh.mp3" id="9_r8p61"]
+
+[sub_resource type="Gradient" id="Gradient_s4jan"]
+interpolation_mode = 2
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0, 0.16777, 0.375276, 0.816199, 1)
+colors = PackedColorArray(1, 0.643137, 0.454902, 1, 0.972549, 0.87451, 0.792157, 1, 0.623529, 0.717647, 1, 1, 0.156863, 0.129412, 0.513726, 1, 0.294118, 0.0901961, 0.513726, 1)
+metadata/_snap_count = 9
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_enh0r"]
+gradient = SubResource("Gradient_s4jan")
+fill_from = Vector2(0.508547, 1)
+fill_to = Vector2(0.508547, 0)
+
+[sub_resource type="Gradient" id="Gradient_qsyxo"]
+offsets = PackedFloat32Array(0, 0.582555, 1)
+colors = PackedColorArray(1, 0.84186, 0.617608, 1, 1, 0.533333, 0.239216, 1, 0.376466, 0.181339, 9.62615e-08, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j3ksx"]
+gradient = SubResource("Gradient_qsyxo")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1iffs"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_58ee8"]
+radius = 10.0499
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kqusg"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_k5iea"]
+material = SubResource("StandardMaterial3D_kqusg")
+radius = 40.134
+height = 81.486
+radial_segments = 32
+rings = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8s7cs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d5swb"]
+radius = 112.285
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g77oc"]
+friction = 0.8
+rough = true
+bounce = 0.64
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3vpjd"]
+radius = 18.1108
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_xdb2r")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(297, 404)
+position_smoothing_enabled = true
+script = ExtResource("2_24beq")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Camera2D"]
+offset_left = -297.0
+offset_top = -15467.0
+offset_right = 983.0
+offset_bottom = -14751.0
+scale = Vector2(0.487549, 22.2196)
+texture = SubResource("GradientTexture2D_enh0r")
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D"]
+z_index = 10
+z_as_relative = false
+offset_left = -297.0
+offset_top = -1537.0
+offset_right = -233.0
+offset_bottom = -1473.0
+scale = Vector2(8.68, 47.7149)
+texture = SubResource("GradientTexture2D_j3ksx")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Camera2D"]
+z_index = 11
+z_as_relative = false
+offset_left = -189.0
+offset_top = -223.0
+offset_right = -149.0
+offset_bottom = -154.0
+scale = Vector2(1.92, 1)
+text = "Welcome!!"
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+tab_size = 24
+text_direction = 1
+
+[node name="CharBubble" type="Node2D" parent="." groups=["bubble"]]
+self_modulate = Color(0, 0.341176, 0.352941, 1)
+material = ExtResource("3_8jk6p")
+position = Vector2(206, -884)
+script = ExtResource("4_jicwq")
+
+[node name="Center" type="RigidBody2D" parent="CharBubble" groups=["bubble"]]
+scale = Vector2(1.34127, 1.34127)
+collision_layer = 3
+collision_mask = 3
+mass = 6.0
+physics_material_override = SubResource("PhysicsMaterial_1iffs")
+gravity_scale = -0.1
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("5_vgumk")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharBubble/Center"]
+shape = SubResource("CircleShape2D_58ee8")
+
+[node name="CircleMask" type="MeshInstance2D" parent="CharBubble/Center"]
+visible = false
+clip_children = 1
+position = Vector2(0, 3.8147e-06)
+scale = Vector2(0.198405, 0.658116)
+mesh = SubResource("CapsuleMesh_k5iea")
+
+[node name="ColorRect" type="ColorRect" parent="CharBubble/Center/CircleMask"]
+clip_children = 2
+offset_left = -48.0
+offset_top = -41.0
+offset_right = -8.0
+offset_bottom = -1.0
+scale = Vector2(2.24, 2.04)
+color = Color(0.61111, 0.0739335, 0.772837, 1)
+
+[node name="CenterJoint2D" type="PinJoint2D" parent="CharBubble/Center"]
+position = Vector2(0, -23.858)
+scale = Vector2(0.745564, 0.745564)
+node_a = NodePath("..")
+node_b = NodePath("../../Point1")
+softness = 16.0
+
+[node name="CenterJoint2D2" type="PinJoint2D" parent="CharBubble/Center"]
+position = Vector2(17.8935, -17.8935)
+scale = Vector2(0.745564, 0.745564)
+node_a = NodePath("..")
+node_b = NodePath("../../Point2")
+softness = 16.0
+
+[node name="CenterJoint2D3" type="PinJoint2D" parent="CharBubble/Center"]
+position = Vector2(22.3669, 0)
+scale = Vector2(0.745564, 0.745564)
+node_a = NodePath("..")
+node_b = NodePath("../../Point3")
+softness = 16.0
+
+[node name="CenterJoint2D4" type="PinJoint2D" parent="CharBubble/Center"]
+position = Vector2(17.8935, 17.8935)
+scale = Vector2(0.745564, 0.745564)
+node_a = NodePath("..")
+node_b = NodePath("../../Point4")
+softness = 16.0
+
+[node name="CenterJoint2D5" type="PinJoint2D" parent="CharBubble/Center"]
+position = Vector2(0, 23.858)
+scale = Vector2(0.745564, 0.745564)
+node_a = NodePath("..")
+node_b = NodePath("../../Point5")
+softness = 16.0
+
+[node name="CenterJoint2D6" type="PinJoint2D" parent="CharBubble/Center"]
+position = Vector2(-17.8935, 17.8935)
+scale = Vector2(0.745564, 0.745564)
+node_a = NodePath("..")
+node_b = NodePath("../../Point6")
+softness = 16.0
+
+[node name="CenterJoint2D7" type="PinJoint2D" parent="CharBubble/Center"]
+position = Vector2(-23.858, 0)
+scale = Vector2(0.745564, 0.745564)
+node_a = NodePath("..")
+node_b = NodePath("../../Point7")
+softness = 16.0
+
+[node name="CenterJoint2D8" type="PinJoint2D" parent="CharBubble/Center"]
+position = Vector2(-17.8935, -17.8935)
+scale = Vector2(0.745564, 0.745564)
+node_a = NodePath("..")
+node_b = NodePath("../../Point8")
+softness = 16.0
+
+[node name="PinJoint2D" type="PinJoint2D" parent="CharBubble/Center"]
+position = Vector2(17.8935, -41.7516)
+scale = Vector2(0.745564, 0.745564)
+node_a = NodePath("../../Point1")
+node_b = NodePath("../../Point2")
+disable_collision = false
+softness = 16.0
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="CharBubble/Center"]
+position = Vector2(40.2604, -11.929)
+scale = Vector2(0.745564, 0.745564)
+node_a = NodePath("../../Point2")
+node_b = NodePath("../../Point3")
+disable_collision = false
+softness = 16.0
+
+[node name="PinJoint2D3" type="PinJoint2D" parent="CharBubble/Center"]
+position = Vector2(40.2604, 17.8935)
+scale = Vector2(0.745564, 0.745564)
+node_a = NodePath("../../Point3")
+node_b = NodePath("../../Point4")
+disable_collision = false
+softness = 16.0
+
+[node name="PinJoint2D4" type="PinJoint2D" parent="CharBubble/Center"]
+position = Vector2(17.8935, 41.7516)
+scale = Vector2(0.745564, 0.745564)
+node_a = NodePath("../../Point4")
+node_b = NodePath("../../Point5")
+disable_collision = false
+softness = 16.0
+
+[node name="PinJoint2D5" type="PinJoint2D" parent="CharBubble/Center"]
+position = Vector2(-17.8935, 41.7516)
+scale = Vector2(0.745564, 0.745564)
+node_a = NodePath("../../Point5")
+node_b = NodePath("../../Point6")
+disable_collision = false
+softness = 16.0
+
+[node name="PinJoint2D6" type="PinJoint2D" parent="CharBubble/Center"]
+position = Vector2(-41.7516, 17.8935)
+scale = Vector2(0.745564, 0.745564)
+node_a = NodePath("../../Point6")
+node_b = NodePath("../../Point7")
+disable_collision = false
+softness = 16.0
+
+[node name="PinJoint2D7" type="PinJoint2D" parent="CharBubble/Center"]
+position = Vector2(-41.7516, -17.8935)
+scale = Vector2(0.745564, 0.745564)
+node_a = NodePath("../../Point7")
+node_b = NodePath("../../Point8")
+disable_collision = false
+softness = 16.0
+
+[node name="PinJoint2D8" type="PinJoint2D" parent="CharBubble/Center"]
+position = Vector2(-17.8935, -41.7516)
+scale = Vector2(0.745564, 0.745564)
+node_a = NodePath("../../Point8")
+node_b = NodePath("../../Point1")
+disable_collision = false
+softness = 16.0
+
+[node name="Point1" parent="CharBubble" instance=ExtResource("6_qei3c")]
+position = Vector2(0, -64)
+rotation = 1.57079
+collision_mask = 3
+gravity_scale = 1.0
+
+[node name="Point2" parent="CharBubble" instance=ExtResource("6_qei3c")]
+position = Vector2(40, -40)
+rotation = -0.785397
+collision_mask = 3
+
+[node name="Point3" parent="CharBubble" instance=ExtResource("6_qei3c")]
+position = Vector2(64, 0)
+collision_mask = 3
+
+[node name="Point4" parent="CharBubble" instance=ExtResource("6_qei3c")]
+position = Vector2(40, 40)
+rotation = 0.785397
+collision_mask = 3
+
+[node name="Point5" parent="CharBubble" instance=ExtResource("6_qei3c")]
+position = Vector2(0, 64)
+rotation = 1.57079
+collision_mask = 3
+
+[node name="Point6" parent="CharBubble" instance=ExtResource("6_qei3c")]
+position = Vector2(-40, 40)
+rotation = -0.785397
+collision_mask = 3
+
+[node name="Point7" parent="CharBubble" instance=ExtResource("6_qei3c")]
+position = Vector2(-64, 0)
+collision_mask = 3
+
+[node name="Point8" parent="CharBubble" instance=ExtResource("6_qei3c")]
+position = Vector2(-40, -40)
+rotation = 0.785397
+collision_mask = 3
+
+[node name="Polygon2D" type="Polygon2D" parent="CharBubble"]
+material = SubResource("ShaderMaterial_8s7cs")
+color = Color(1, 0.768627, 0.356863, 1)
+antialiased = true
+polygon = PackedVector2Array(4, 75, 49, 45, 72, -11, -14, -68, -61, 8)
+uv = PackedVector2Array(36.9372, 98.4958, 81.9372, 68.4958, 104.937, 12.4958, 18.9372, -44.5042, -28.0628, 31.4958)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-687, 384)
+collision_layer = 3
+script = ExtResource("7_qbucb")
+force = Vector2(500, 0)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_d5swb")
+
+[node name="ScenarioCol1" type="StaticBody2D" parent="."]
+position = Vector2(-957, 1.90735e-06)
+scale = Vector2(1.25505, 1.25505)
+collision_layer = 3
+collision_mask = 0
+
+[node name="Polygon2D" type="CollisionPolygon2D" parent="ScenarioCol1"]
+position = Vector2(946, -62)
+scale = Vector2(0.555, 0.555)
+polygon = PackedVector2Array(-302, 834, -14, 1023, 23, 1187, 142, 1238, 334, 1236, 289, 718, 102, 667, 201, 469, 380, 477, 382, 5, 424.56, -1226.31, 15.4006, -1454.58, 176.193, -2079.09, 500.649, -2064.73, 513.57, -3260.62, 233.619, -3988.5, 483.422, -3984.19, 569.56, -5266.22, 548.026, -7554.64, 529.362, -9468.36, -59.2531, -8993.16, 522.709, -9728.67, 489.164, -10204.8, 548.026, -11547.2, 543.719, -14919.5, 526.491, -17101.7, 263.768, -17776.5, 569.56, -18077.9, 397.283, -18830.2, 104.411, -18825.9, 61.3413, -18640.7, 31.1927, -18968, 556.64, -19269.5, 853.818, -19532.2, 840.898, -18293.3, 1095.01, -14926.7, 1327.58, -11227, 796.393, -9442.52, 1051.94, -8701.72, 872.482, -7131.13, 905.502, -4020.08, 575, 5, 575, 1337, -390, 1329, -404, -6, -477.026, -2270.03, -622.027, -5027.9, -514.353, -7145.48, -622.027, -11619, -385.145, -16148.4, -321.976, -18563.2, -102.322, -19605.5, -79.3521, -19381.5, -50.6392, -19243.7, -76.4808, -19108.7, -105.194, -19236.5, -158.313, -18537.3, -231.531, -18284.7, -158.313, -16287.7, 6.78671, -16148.4, -248.758, -14744.4, -202.818, -11061.9, -299.006, -7688.16, 273.817, -8639.99, -324.848, -6643.01, -324.848, -5266.22, -85.0947, -3531.96, -76.4808, -2465.27, 328.372, -2245.62, 35.4997, -2225.52, -197.075, -1632.6, -383.709, -1068.39, 171.886, -788.439, -234.402, -642.003, -59, 209)
+
+[node name="Ball" type="RigidBody2D" parent="." groups=["ball"]]
+position = Vector2(211, -884)
+collision_layer = 3
+collision_mask = 3
+mass = 0.952
+physics_material_override = SubResource("PhysicsMaterial_g77oc")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+light_mask = 3
+visibility_layer = 0
+shape = SubResource("CircleShape2D_3vpjd")
+
+[node name="fdsdf" type="Polygon2D" parent="Ball"]
+clip_children = 1
+position = Vector2(-8, 15)
+scale = Vector2(0.889441, 0.889441)
+polygon = PackedVector2Array(20, 10, 32, -2, 34, -17, 24, -36, 3, -40, -13, -30, -18, -14, -14, 2, 2, 12)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball/fdsdf"]
+clip_children = 2
+position = Vector2(2.50002, -36)
+scale = Vector2(0.200521, 0.139355)
+texture = ExtResource("8_bdydn")
+
+[node name="Uihhh" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(686, 308)
+stream = ExtResource("9_r8p61")
+volume_db = -26.553
+autoplay = true
+
+[connection signal="body_entered" from="CharBubble/Center" to="CharBubble" method="_on_center_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
