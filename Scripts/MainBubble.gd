@@ -98,9 +98,15 @@ func enlarge_polygon(vertices: Array, scale: float) -> Array:
 	return enlarged_vertices
 
 # Function to subdivide a polygon's edges to add smoothness
-func subdivide_polygon(vertices: Array, subdivisions: int) -> Array:
+func subdivide_polygon(vertices: Array, subdivisions: int, bulge_factor: float = 0.085) -> Array:
 	if subdivisions <= 0:
 		return vertices
+
+	# Calculate the center of the polygon
+	var center = Vector2.ZERO
+	for vertex in vertices:
+		center += vertex
+	center /= vertices.size()
 
 	var smoothed_vertices = []
 	for i in range(vertices.size()):
@@ -111,10 +117,16 @@ func subdivide_polygon(vertices: Array, subdivisions: int) -> Array:
 		# Add interpolated points between start and end
 		for j in range(1, subdivisions + 1):
 			var t = float(j) / (subdivisions + 1)
-			var interpolated = lerp(start,end, t)
+			var interpolated = start.lerp(end, t)
+			
+			# Push the point outward from the center
+			var offset = (interpolated - center) * bulge_factor
+			interpolated += offset
+			
 			smoothed_vertices.append(interpolated)
 
 	return smoothed_vertices
+
 
 
 func _on_center_body_entered(body: Node) -> void:

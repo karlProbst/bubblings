@@ -180,7 +180,7 @@ radius = 18.1108
 [node name="Sky" type="Sprite2D" parent="."]
 position = Vector2(243, -272)
 rotation = 1.57079
-scale = Vector2(1.18304, 1.18304)
+scale = Vector2(1.18304, 1.30304)
 texture = ExtResource("1_d4ocg")
 script = ExtResource("2_kc0nj")
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://7v6a5862aode"]
+[gd_scene load_steps=19 format=3 uid="uid://7v6a5862aode"]
 
 [ext_resource type="Texture2D" uid="uid://bi2m5egvtx4nn" path="res://Assets/Images/opening/Sky.png" id="1_5fwsr"]
 [ext_resource type="PackedScene" uid="uid://5wx1jom1euav" path="res://Scenes/pombo_da_praca.tscn" id="1_mxmlo"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cxw3whjrpnlou" path="res://Assets/Images/rock1.jpg" id="3_eustx"]
 [ext_resource type="Texture2D" uid="uid://d0vwvwdwiebgt" path="res://Assets/Images/nut.png" id="4_k8b85"]
 [ext_resource type="AudioStream" uid="uid://c3oyixss1wg4y" path="res://Assets/Sound/kabum.mp3" id="7_if6cs"]
+[ext_resource type="Texture2D" uid="uid://hrocn3auptuu" path="res://Assets/Images/Thank you.png" id="8_m5lm5"]
 
 [sub_resource type="Gradient" id="Gradient_s4jan"]
 interpolation_mode = 2
@@ -322,3 +323,7 @@ texture = SubResource("NoiseTexture2D_djr5n")
 direction = Vector2(-10, 0)
 initial_velocity_min = 428.57
 initial_velocity_max = 428.57
+
+[node name="ThankYou" type="Sprite2D" parent="."]
+position = Vector2(236, 997)
+texture = ExtResource("8_m5lm5")
