@@ -13,6 +13,11 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if nBubbles==1:
+		for i in 10:
+				var window_size2 = DisplayServer.window_get_size()
+				var new_bubble = create_bubble(Vector2(randf_range(0,window_size2.x),randf_range(0,window_size2.y)),randf_range(0.2,2.0))
+				# Add the new bubble to the scene tree
+				get_parent().add_child(new_bubble)
 		$AnimationPlayer.play("new_animation_4")
 		nBubbles+=1
 	if StartTriggered and nBubbles==0:
@@ -42,7 +47,7 @@ func create_bubble(position: Vector2,growth:float) -> Node2D:
 	var bubble_instance = bubble_scene.instantiate()
 	# Set the bubble's position
 	bubble_instance.position = position
-	bubble_instance.scale = Vector2(0.6,0.6)
+	bubble_instance.scale = Vector2(growth,growth)
 	return bubble_instance
 	
 	

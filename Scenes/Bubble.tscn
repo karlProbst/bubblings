@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://drm6rtfp4x1b8"]
+[gd_scene load_steps=15 format=3 uid="uid://drm6rtfp4x1b8"]
 
 [ext_resource type="PackedScene" uid="uid://wt8pc14oc5ie" path="res://Point.tscn" id="1_0nn2w"]
 [ext_resource type="Script" path="res://Scripts/MainBubble.gd" id="1_okrg6"]
 [ext_resource type="Script" path="res://Center.gd" id="2_3sxw3"]
+[ext_resource type="Gradient" uid="uid://bfstj62mw0oqs" path="res://Assets/BubbleGradient.tres" id="4_dgd0q"]
+[ext_resource type="Shader" path="res://Scenes/Bubble.gdshader" id="4_xunm2"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1iffs"]
 friction = 0.0
@@ -21,10 +23,62 @@ height = 81.486
 radial_segments = 32
 rings = 4
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8s7cs"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2cpru"]
+frequency = 0.0005
+fractal_type = 3
 
-[node name="Bubble" type="Node2D"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_84p7s"]
+seamless = true
+color_ramp = ExtResource("4_dgd0q")
+noise = SubResource("FastNoiseLite_2cpru")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8s7cs"]
+shader = ExtResource("4_xunm2")
+
+[sub_resource type="Gradient" id="Gradient_d1e2d"]
+offsets = PackedFloat32Array(0, 0.735661)
+colors = PackedColorArray(0.545098, 0.415686, 0.92549, 1, 0, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_o8r1e"]
+gradient = SubResource("Gradient_d1e2d")
+fill = 1
+fill_from = Vector2(0.517094, 0.512821)
+fill_to = Vector2(0.816239, 0.235043)
+
+[node name="Bubble" type="Node2D" groups=["bubble"]]
 script = ExtResource("1_okrg6")
+
+[node name="Center" type="RigidBody2D" parent="." groups=["bubble"]]
+collision_layer = 3
+mass = 3.587
+physics_material_override = SubResource("PhysicsMaterial_1iffs")
+gravity_scale = -0.47
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("2_3sxw3")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Center"]
+shape = SubResource("CircleShape2D_58ee8")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Center"]
+shape = SubResource("CircleShape2D_58ee8")
+
+[node name="CircleMask" type="MeshInstance2D" parent="Center"]
+visible = false
+clip_children = 1
+position = Vector2(0, 3.8147e-06)
+scale = Vector2(0.198405, 0.658116)
+mesh = SubResource("CapsuleMesh_k5iea")
+
+[node name="ColorRect" type="ColorRect" parent="Center/CircleMask"]
+clip_children = 2
+offset_left = -48.0
+offset_top = -41.0
+offset_right = -8.0
+offset_bottom = -1.0
+scale = Vector2(2.24, 2.04)
+color = Color(0.61111, 0.0739335, 0.772837, 1)
 
 [node name="CenterJoint2D" type="PinJoint2D" parent="."]
 visible = false
@@ -81,38 +135,6 @@ position = Vector2(-24, -24)
 node_a = NodePath("../Center")
 node_b = NodePath("../Point8")
 softness = 12.2
-
-[node name="Center" type="RigidBody2D" parent="." groups=["bubble"]]
-collision_layer = 3
-mass = 3.587
-physics_material_override = SubResource("PhysicsMaterial_1iffs")
-gravity_scale = -0.47
-contact_monitor = true
-max_contacts_reported = 1
-script = ExtResource("2_3sxw3")
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Center"]
-shape = SubResource("CircleShape2D_58ee8")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Center"]
-shape = SubResource("CircleShape2D_58ee8")
-
-[node name="CircleMask" type="MeshInstance2D" parent="Center"]
-visible = false
-clip_children = 1
-position = Vector2(0, 3.8147e-06)
-scale = Vector2(0.198405, 0.658116)
-mesh = SubResource("CapsuleMesh_k5iea")
-
-[node name="ColorRect" type="ColorRect" parent="Center/CircleMask"]
-clip_children = 2
-offset_left = -48.0
-offset_top = -41.0
-offset_right = -8.0
-offset_bottom = -1.0
-scale = Vector2(2.24, 2.04)
-color = Color(0.61111, 0.0739335, 0.772837, 1)
 
 [node name="Point1" parent="." instance=ExtResource("1_0nn2w")]
 position = Vector2(0, -64)
@@ -218,11 +240,29 @@ disable_collision = false
 softness = 16.0
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-modulate = Color(0.384314, 0.498039, 1, 0.752941)
-self_modulate = Color(0.713726, 1, 1, 1)
-material = SubResource("ShaderMaterial_8s7cs")
+clip_children = 2
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(8, -16)
 antialiased = true
-polygon = PackedVector2Array(4, 75, 49, 45, 72, -11, -14, -68, -61, 8)
-uv = PackedVector2Array(36.9372, 98.4958, 81.9372, 68.4958, 104.937, 12.4958, 18.9372, -44.5042, -28.0628, 31.4958)
+texture = SubResource("NoiseTexture2D_84p7s")
+texture_offset = Vector2(63.72, 43.305)
+polygon = PackedVector2Array(43, 57, 66, 20, 34, -26, -6, -47, -43, -29, -75, 15, -48, 61, 1, 81)
+uv = PackedVector2Array(318.46, 319.057, 381.84, 217.098, 304.681, 93.0944, 180.677, 32.4702, 81.4743, 82.0718, -6.70638, 203.32, 67.696, 330.08, 202.723, 385.193)
+
+[node name="Texture" type="TextureRect" parent="Polygon2D"]
+material = SubResource("ShaderMaterial_8s7cs")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -100.0
+offset_right = 114.0
+offset_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_o8r1e")
 
 [connection signal="body_entered" from="Center" to="." method="_on_center_body_entered"]

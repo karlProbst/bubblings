@@ -1,11 +1,12 @@
 extends Camera2D
 
+@onready var ball = get_node("../Ball")
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var ballvel = 0.0
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	position.y=get_node("../Ball").position.y
+	# Get ball's velocity
+	ballvel = ball.linear_velocity.length()
+	position.y = ball.position.y
+	var target_zoom = clampf(ballvel / 40, 1.5, 0.7)
+	zoom = lerp(zoom, Vector2(target_zoom, target_zoom), delta/10)

@@ -4,6 +4,7 @@ extends Node2D
 var polygon: Polygon2D
 # Reference to the shader resource
 var SHADER = preload("res://Shaders/BubbleShader.gdshader")
+var BUBBLEPARTICLE = preload("res://Scenes/bubble_cpu_particles_2d.tscn")
 # Scaling factor for enlarging the polygon
 var scale_factor: float = 1.3
 # Number of subdivisions per edge to add smoothness
@@ -31,6 +32,7 @@ func _ready():
 
 # Called every frame
 func _process(delta: float) -> void:
+	$Polygon2D/Texture.position=($Center.position-Vector2(100,100))
 	
 	# Update the polygon shape every frame
 	var points = get_points_positions()
@@ -40,6 +42,15 @@ func _process(delta: float) -> void:
 		# Subdivide the polygon to add smoothness
 		var smoothed_points = subdivide_polygon(enlarged_points, subdivisions)
 		polygon.polygon = smoothed_points
+		var new_uv = []
+		for point in smoothed_points:
+		# Normalize UV based on bounding box of new polygon
+			var uv_x = (point.x - smoothed_points[0].x) / 1.0 # Adjust width as needed
+			var uv_y = (point.y - smoothed_points[0].y) / 1.0 # Adjust height as needed
+			new_uv.append(Vector2(uv_x, uv_y))
+
+		# Apply the new UV mapping
+		polygon.uv = new_uv
 	if should_explode() or exploded:
 		explode()
 
@@ -66,12 +77,17 @@ func should_explode() -> bool:
 func explode():
 	var sound = preload("res://Assets/Sound/bup.mp3")  # Replace with your sound file's path
 	play_sound_effect(sound, self.global_position)
-
-	print("Bubble exploded!")
+	spawn_bubble_particle(position)
 	queue_free()
 
 
-
+func spawn_bubble_particle(position: Vector2) -> void:
+	# Create an instance of the particle scene
+	var bubble_particle = BUBBLEPARTICLE.instantiate()
+	# Set the bubble's position
+	bubble_particle.position = position
+	bubble_particle.one_shot = true
+	get_parent().add_child(bubble_particle)
 # Function to get positions of all child nodes named "Point*"
 func get_points_positions() -> Array:
 	var positions = []
@@ -144,7 +160,6 @@ func play_sound_effect(sound: AudioStream, position: Vector2) -> void:
 	sound_player
 	# Add the sound player to the current scene tree
 	get_parent().add_child(sound_player)
-	print(sound_player)
 	# Play the sound
 	sound_player.play()
 
