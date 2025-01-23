@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Bubblings"
-run/main_scene="res://Scenes/Stages/Level1.tscn"
+run/main_scene="res://Scenes/Stages/Start.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://Assets/Images/icon.svg"
 
@@ -21,7 +21,7 @@ DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [display]
 
-window/size/viewport_width=500
+window/size/viewport_width=550
 window/size/viewport_height=800
 window/stretch/mode="viewport"
 

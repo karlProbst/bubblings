@@ -37,10 +37,9 @@ shape = SubResource("CircleShape2D_eascj")
 shape = SubResource("CircleShape2D_eascj")
 
 [node name="CircleMask" type="MeshInstance2D" parent="."]
-visible = false
 clip_children = 1
 position = Vector2(0, 3.8147e-06)
-scale = Vector2(0.198405, 0.658116)
+scale = Vector2(0.254256, 0.248907)
 mesh = SubResource("CapsuleMesh_6n0dy")
 
 [node name="ColorRect" type="ColorRect" parent="CircleMask"]
@@ -50,4 +49,4 @@ offset_top = -41.0
 offset_right = -8.0
 offset_bottom = -1.0
 scale = Vector2(2.24, 2.04)
-color = Color(0.61111, 0.0739335, 0.772837, 1)
+color = Color(0.25098, 0.454902, 0.513726, 0.545098)

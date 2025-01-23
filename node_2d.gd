@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 # Preload the scene you want to instantiate
 var bubble_scene = preload("res://Scenes/Bubble.tscn")
 # The key to reset the game
@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 			var window_size = DisplayServer.window_get_size()
 			var width = window_size.x
 			var height = window_size.y
-			var mouse_position = get_viewport().get_mouse_position()+$Camera2D.position-(Vector2(width/2,height/2))
+			var mouse_position = get_global_mouse_position()
 
 		
 			# Instantiate the scene
