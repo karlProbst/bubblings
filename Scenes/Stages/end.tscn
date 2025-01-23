@@ -1,0 +1,324 @@
+[gd_scene load_steps=18 format=3 uid="uid://7v6a5862aode"]
+
+[ext_resource type="Texture2D" uid="uid://bi2m5egvtx4nn" path="res://Assets/Images/opening/Sky.png" id="1_5fwsr"]
+[ext_resource type="PackedScene" uid="uid://5wx1jom1euav" path="res://Scenes/pombo_da_praca.tscn" id="1_mxmlo"]
+[ext_resource type="Texture2D" uid="uid://c2n6qdfg0i23s" path="res://Assets/Images/coquim.png" id="2_mcsbh"]
+[ext_resource type="Script" path="res://Scripts/sky.gd" id="2_ytkvd"]
+[ext_resource type="Texture2D" uid="uid://cxw3whjrpnlou" path="res://Assets/Images/rock1.jpg" id="3_eustx"]
+[ext_resource type="Texture2D" uid="uid://d0vwvwdwiebgt" path="res://Assets/Images/nut.png" id="4_k8b85"]
+[ext_resource type="AudioStream" uid="uid://c3oyixss1wg4y" path="res://Assets/Sound/kabum.mp3" id="7_if6cs"]
+
+[sub_resource type="Gradient" id="Gradient_s4jan"]
+interpolation_mode = 2
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0, 0.196262, 0.199377, 0.333333, 0.816199, 1)
+colors = PackedColorArray(0.0156863, 0.00784314, 0, 1, 0.0156863, 0.00784314, 0.435294, 1, 0.972549, 0.784314, 0.901961, 1, 0.623529, 0.717647, 1, 1, 0.156863, 0.129412, 0.513726, 1, 0.0610926, 0.0312136, 0.281761, 1)
+metadata/_snap_count = 9
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0tdg1"]
+gradient = SubResource("Gradient_s4jan")
+fill_from = Vector2(0.508547, 1)
+fill_to = Vector2(0.508547, 0)
+
+[sub_resource type="Animation" id="Animation_3otnw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(230, 308)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Ball:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Mountain:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-470, 529)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Sky:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(260, 1621)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../AudioStreamPlayer2D:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Ball:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Nut:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(240, 396)]
+}
+
+[sub_resource type="Animation" id="Animation_kh5m3"]
+resource_name = "new_animation"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.0333333, 0.4, 1.26667, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(238.5, 373.025), Vector2(257.796, 308.605), Vector2(500, -500), Vector2(500, -500)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Ball:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 4.86667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.523599, 1.0472]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Mountain:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3.53333, 4.86667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(744, 2192), Vector2(-470, 529)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Sky:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.466667, 1.8, 4.83333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(260, 1621), Vector2(260, 1616.86), Vector2(260, -624), Vector2(260, -700)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../AudioStreamPlayer2D:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(4.3, 4.76667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Ball:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(4.2, 4.86667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Nut:position")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(4.83333, 5.23333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(248.529, 392.972), Vector2(-37, 723)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Nut:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(5.33333),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.94307]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0fm1j"]
+_data = {
+"RESET": SubResource("Animation_3otnw"),
+"new_animation": SubResource("Animation_kh5m3")
+}
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dqx4b"]
+friction = 0.8
+rough = true
+bounce = 0.64
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6nq06"]
+radius = 18.1108
+
+[sub_resource type="Gradient" id="Gradient_yfk2x"]
+offsets = PackedFloat32Array(0.012945, 0.475728, 1)
+colors = PackedColorArray(0.0235294, 0.0235294, 0.0235294, 0, 0.533962, 0.215515, 0.045183, 1, 0, 0, 0, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0mu6i"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_djr5n"]
+width = 16
+height = 16
+color_ramp = SubResource("Gradient_yfk2x")
+noise = SubResource("FastNoiseLite_0mu6i")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sky" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(260, 1621)
+rotation = 1.57079
+scale = Vector2(1.58489, 1.15939)
+texture = ExtResource("1_5fwsr")
+script = ExtResource("2_ytkvd")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+visible = false
+offset_right = 1280.0
+offset_bottom = 755.0
+scale = Vector2(0.487549, 23.3396)
+texture = SubResource("GradientTexture2D_0tdg1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../PomboDaPraca")
+libraries = {
+"": SubResource("AnimationLibrary_0fm1j")
+}
+autoplay = "new_animation"
+
+[node name="PomboDaPraca" parent="." instance=ExtResource("1_mxmlo")]
+position = Vector2(230, 308)
+scale = Vector2(1.16733, 1.10963)
+autoplay = "Flying"
+
+[node name="Nut" type="Sprite2D" parent="."]
+position = Vector2(240, 396)
+rotation = 3.94307
+scale = Vector2(0.146603, 0.146603)
+texture = ExtResource("4_k8b85")
+
+[node name="Ball" type="RigidBody2D" parent="." groups=["ball"]]
+position = Vector2(239, 393)
+scale = Vector2(0.919679, 0.874218)
+collision_layer = 3
+mass = 0.529
+physics_material_override = SubResource("PhysicsMaterial_dqx4b")
+sleeping = true
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="fdsdf" type="Polygon2D" parent="Ball"]
+clip_children = 1
+position = Vector2(-8, 15)
+scale = Vector2(0.889441, 0.889441)
+polygon = PackedVector2Array(20, 10, 33.729, -4.49725, 34.8533, -24.7347, 24.7346, -38.2263, 3, -40, -13.4916, -30.3561, -19.1131, -11.243, -13.4916, 2.2486, 2, 12)
+
+[node name="Coquim" type="Sprite2D" parent="Ball/fdsdf"]
+position = Vector2(8.99441, -16.8645)
+scale = Vector2(0.219801, 0.219801)
+texture = ExtResource("2_mcsbh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+light_mask = 3
+visibility_layer = 0
+position = Vector2(-1.52588e-05, -6.10352e-05)
+shape = SubResource("CircleShape2D_6nq06")
+debug_color = Color(0.968627, 0.176471, 0, 0.690196)
+
+[node name="Mountain" type="Polygon2D" parent="."]
+clip_children = 1
+position = Vector2(-470, 529)
+polygon = PackedVector2Array(416, 1501, 590, 1034, 676, 521, 733, 51, 722, -524, 597, -706, 752, -719, 725, -958, 651, -1668, 701, -2055, 1700, -2273, 2326, -1308, 2895, 1526, 2889, 1795, -246, 1828)
+
+[node name="Rock1" type="Sprite2D" parent="Mountain"]
+position = Vector2(1124, -235)
+scale = Vector2(2.48879, 2.48879)
+texture = ExtResource("3_eustx")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_if6cs")
+pitch_scale = 0.77
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(232, 398)
+emitting = false
+amount = 64
+one_shot = true
+preprocess = 0.25
+explosiveness = 0.23
+randomness = 0.11
+texture = SubResource("NoiseTexture2D_djr5n")
+direction = Vector2(-10, 0)
+initial_velocity_min = 428.57
+initial_velocity_max = 428.57

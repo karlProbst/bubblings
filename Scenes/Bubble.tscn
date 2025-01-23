@@ -11,11 +11,11 @@ bounce = 1.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_58ee8"]
 radius = 10.0499
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kqusg"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fpq7c"]
 albedo_color = Color(0, 1, 1, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_k5iea"]
-material = SubResource("StandardMaterial3D_kqusg")
+material = SubResource("StandardMaterial3D_fpq7c")
 radius = 40.134
 height = 81.486
 radial_segments = 32
@@ -31,56 +31,56 @@ visible = false
 position = Vector2(0, -32)
 node_a = NodePath("../Center")
 node_b = NodePath("../Point1")
-softness = 16.0
+softness = 12.2
 
 [node name="CenterJoint2D2" type="PinJoint2D" parent="."]
 visible = false
 position = Vector2(24, -24)
 node_a = NodePath("../Center")
 node_b = NodePath("../Point2")
-softness = 16.0
+softness = 12.2
 
 [node name="CenterJoint2D3" type="PinJoint2D" parent="."]
 visible = false
 position = Vector2(30, 0)
 node_a = NodePath("../Center")
 node_b = NodePath("../Point3")
-softness = 16.0
+softness = 12.2
 
 [node name="CenterJoint2D4" type="PinJoint2D" parent="."]
 visible = false
 position = Vector2(24, 24)
 node_a = NodePath("../Center")
 node_b = NodePath("../Point4")
-softness = 16.0
+softness = 12.2
 
 [node name="CenterJoint2D5" type="PinJoint2D" parent="."]
 visible = false
 position = Vector2(0, 32)
 node_a = NodePath("../Center")
 node_b = NodePath("../Point5")
-softness = 16.0
+softness = 12.2
 
 [node name="CenterJoint2D6" type="PinJoint2D" parent="."]
 visible = false
 position = Vector2(-24, 24)
 node_a = NodePath("../Center")
 node_b = NodePath("../Point6")
-softness = 16.0
+softness = 12.2
 
 [node name="CenterJoint2D7" type="PinJoint2D" parent="."]
 visible = false
 position = Vector2(-32, 0)
 node_a = NodePath("../Center")
 node_b = NodePath("../Point7")
-softness = 16.0
+softness = 12.2
 
 [node name="CenterJoint2D8" type="PinJoint2D" parent="."]
 visible = false
 position = Vector2(-24, -24)
 node_a = NodePath("../Center")
 node_b = NodePath("../Point8")
-softness = 16.0
+softness = 12.2
 
 [node name="Center" type="RigidBody2D" parent="." groups=["bubble"]]
 collision_layer = 3

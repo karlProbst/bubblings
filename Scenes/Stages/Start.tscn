@@ -159,12 +159,12 @@ _data = {
 "new_animation_4": SubResource("Animation_fngnn")
 }
 
-[sub_resource type="Gradient" id="Gradient_6560r"]
+[sub_resource type="Gradient" id="Gradient_1t4vc"]
 offsets = PackedFloat32Array(0, 0.582555, 1)
 colors = PackedColorArray(0.933333, 0.67451, 0.321569, 1, 1, 0.533333, 0.239216, 1, 0.376466, 0.181339, 9.62615e-08, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_r4q6h"]
-gradient = SubResource("Gradient_6560r")
+gradient = SubResource("Gradient_1t4vc")
 fill_to = Vector2(0, 1)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6ls6l"]

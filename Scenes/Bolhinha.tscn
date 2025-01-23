@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3br0twialbfh"]
+
+[ext_resource type="Script" path="res://Scenes/bolhinha.gd" id="1_nwhjw"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3rs7d"]
+friction = 0.28
+rough = true
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eascj"]
+radius = 10.0499
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kqusg"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_6n0dy"]
+material = SubResource("StandardMaterial3D_kqusg")
+radius = 40.134
+height = 81.486
+radial_segments = 32
+rings = 4
+
+[node name="Bolhinha" type="RigidBody2D" groups=["bubble"]]
+collision_layer = 3
+mass = 0.109
+physics_material_override = SubResource("PhysicsMaterial_3rs7d")
+gravity_scale = -0.223
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_nwhjw")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_eascj")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_eascj")
+
+[node name="CircleMask" type="MeshInstance2D" parent="."]
+visible = false
+clip_children = 1
+position = Vector2(0, 3.8147e-06)
+scale = Vector2(0.198405, 0.658116)
+mesh = SubResource("CapsuleMesh_6n0dy")
+
+[node name="ColorRect" type="ColorRect" parent="CircleMask"]
+clip_children = 2
+offset_left = -48.0
+offset_top = -41.0
+offset_right = -8.0
+offset_bottom = -1.0
+scale = Vector2(2.24, 2.04)
+color = Color(0.61111, 0.0739335, 0.772837, 1)

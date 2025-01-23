@@ -3,7 +3,7 @@ extends Node
 var bubble_scene = preload("res://Scenes/Bubble.tscn")
 # The key to reset the game
 var reset_key: String = "r"  # Replace "r" with the desired key
-
+var is_muted = false
 var growth = 0
 var mouse_was_pressed=false
 # Called every frame
@@ -31,7 +31,14 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("ui_select"):
 		reset_scene()
+	if Input.is_action_just_pressed("Mute"):
+		toggle_mute()
 
+
+
+func toggle_mute() -> void:
+	is_muted = !is_muted
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), is_muted)
 # Function to reset the current scene
 func reset_scene() -> void:
 	get_tree().reload_current_scene()
@@ -44,3 +51,8 @@ func create_bubble(position: Vector2,growth:float) -> Node2D:
 	bubble_instance.position = position
 	bubble_instance.scale = Vector2(0.6,0.6)
 	return bubble_instance
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name=="get":
+		get_tree().change_scene_to_file("res://Scenes/Stages/end.tscn")

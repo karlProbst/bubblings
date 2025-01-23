@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bi7h85sd11d31"]
+[gd_scene load_steps=53 format=3 uid="uid://bi7h85sd11d31"]
 
 [ext_resource type="Script" path="res://node_2d.gd" id="1_xdb2r"]
 [ext_resource type="Script" path="res://camera_2d.gd" id="2_24beq"]
@@ -14,18 +14,32 @@
 [ext_resource type="AudioStream" uid="uid://d0s7m1sggcu3u" path="res://Assets/Sound/uihhh.mp3" id="9_r8p61"]
 [ext_resource type="Texture2D" uid="uid://6ncg3gcccj7r" path="res://Assets/Images/PomboPlaying.png" id="11_i84t1"]
 [ext_resource type="Texture2D" uid="uid://ycdcf5rrwnnr" path="res://Assets/Images/pomboPlyaingTomou.png" id="11_r6o2u"]
+[ext_resource type="Script" path="res://Scenes/Stages/stuck.gd" id="12_rb54l"]
 [ext_resource type="AudioStream" uid="uid://bel0pmp1kg4he" path="res://Assets/Sound/glyglu.mp3" id="13_lwdju"]
+[ext_resource type="Texture2D" uid="uid://beuhsmgnjw2nh" path="res://Assets/Images/rockGranulada.jpg" id="15_4b3ev"]
 [ext_resource type="Texture2D" uid="uid://dpdg7kkfcimvs" path="res://Assets/Images/Placa.png" id="15_jeuff"]
+[ext_resource type="Texture2D" uid="uid://b876betdc1icl" path="res://Assets/Images/treeFlowersleaves.jpg" id="16_kqewv"]
+[ext_resource type="AudioStream" uid="uid://b684awb2boyvk" path="res://Assets/Sound/ventooo.mp3" id="17_g3r3r"]
+[ext_resource type="Texture2D" uid="uid://dxvnhy3shiha5" path="res://Assets/Images/treeleaves.jpg" id="17_g6nwg"]
+[ext_resource type="Texture2D" uid="uid://dcn1gu0d1dert" path="res://Assets/Images/redpainttrated.png" id="18_d2kho"]
+[ext_resource type="PackedScene" uid="uid://c3br0twialbfh" path="res://Scenes/Bolhinha.tscn" id="19_8stck"]
+[ext_resource type="Texture2D" uid="uid://b6d8pd35x12dl" path="res://Assets/Images/Crab2.png" id="19_cwand"]
+[ext_resource type="Texture2D" uid="uid://cxw3whjrpnlou" path="res://Assets/Images/rock1.jpg" id="19_nrs3r"]
+[ext_resource type="Script" path="res://Scenes/Stages/bubble_recife.gd" id="20_6xf7k"]
+[ext_resource type="Texture2D" uid="uid://d30gxr28osdta" path="res://Assets/Images/trunk.jpg" id="20_v761d"]
+[ext_resource type="Texture2D" uid="uid://b5kjs3dy0bkjh" path="res://Assets/Images/pilastraTreated.png" id="21_dlltn"]
+[ext_resource type="Texture2D" uid="uid://blb8b0vrb1lim" path="res://Assets/Images/Mountain.png" id="22_iwr0k"]
+[ext_resource type="Texture2D" uid="uid://c1sr3dqp1iccr" path="res://Assets/Images/grassclose.jpg" id="22_sbxeq"]
 
-[sub_resource type="Gradient" id="Gradient_s4jan"]
+[sub_resource type="Gradient" id="Gradient_1ipij"]
 interpolation_mode = 2
 interpolation_color_space = 2
 offsets = PackedFloat32Array(0, 0.196262, 0.199377, 0.333333, 0.816199, 1)
-colors = PackedColorArray(0.0156863, 0.00784314, 0, 1, 0.0156863, 0.00784314, 0.435294, 1, 0.972549, 0.784314, 0.901961, 1, 0.623529, 0.717647, 1, 1, 0.156863, 0.129412, 0.513726, 1, 0.141176, 0.0901961, 0.513726, 1)
+colors = PackedColorArray(0.0156863, 0.00784314, 0, 1, 0.0156863, 0.00784314, 0.435294, 1, 0.972549, 0.784314, 0.901961, 1, 0.623529, 0.717647, 1, 1, 0.156863, 0.129412, 0.513726, 1, 0.0610926, 0.0312136, 0.281761, 1)
 metadata/_snap_count = 9
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_enh0r"]
-gradient = SubResource("Gradient_s4jan")
+gradient = SubResource("Gradient_1ipij")
 fill_from = Vector2(0.508547, 1)
 fill_to = Vector2(0.508547, 0)
 
@@ -62,6 +76,158 @@ radius = 45.1774
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_633mc"]
 size = Vector2(544, 851.761)
 
+[sub_resource type="Animation" id="Animation_w7jx2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(185, -13620)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("../Ball:freeze_mode")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("../Ball:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(386, -13449)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("../Camera2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(297, 404)]
+}
+
+[sub_resource type="Animation" id="Animation_66a8l"]
+resource_name = "get"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.466667, 1.23333, 1.5, 2.73333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(185, -13620), Vector2(185, -13628), Vector2(479.36, -13673.1), Vector2(479.36, -13673.1), Vector2(-100, -14401.9)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.466667, 1.1, 1.43333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [&"ToFly", &"Flying", &"ToFly", &"Flying"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333333, 1.63333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Ball:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.466667, 1.2, 1.5, 2.73333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(496, -13675), Vector2(496, -13676), Vector2(496, -13666), Vector2(515, -13647), Vector2(-119, -14386)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Ball:freeze_mode")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Camera2D:position")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.5, 4.9, 14.8667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(297, -13675), Vector2(297, -15221.3), Vector2(297, -15350)]
+}
+
+[sub_resource type="Animation" id="Animation_iud0w"]
+resource_name = "new_animation_2"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7nhxj"]
+_data = {
+"RESET": SubResource("Animation_w7jx2"),
+"get": SubResource("Animation_66a8l"),
+"new_animation_2": SubResource("Animation_iud0w")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s2gjn"]
+radius = 29.3838
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g77oc"]
 friction = 0.8
 rough = true
@@ -84,6 +250,21 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_oip11"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.195477]
+}
+
 [sub_resource type="Animation" id="Animation_syn4b"]
 resource_name = "new_animation"
 loop_mode = 1
@@ -100,21 +281,6 @@ tracks/0/keys = {
 "values": [0.195477, -0.197222, 0.195477]
 }
 
-[sub_resource type="Animation" id="Animation_oip11"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:skew")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.195477]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pdo6w"]
 _data = {
 "RESET": SubResource("Animation_oip11"),
@@ -125,22 +291,28 @@ _data = {
 script = ExtResource("1_xdb2r")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-offset_top = -15938.0
+offset_top = -16584.0
 offset_right = 1280.0
-offset_bottom = -15183.0
-scale = Vector2(0.487549, 22.2196)
+offset_bottom = -15829.0
+scale = Vector2(0.487549, 23.3396)
 texture = SubResource("GradientTexture2D_enh0r")
 
-[node name="PomboDaPraca" parent="." instance=ExtResource("2_m2urk")]
-position = Vector2(275, -13810)
-scale = Vector2(1.77754, 1.78609)
-animation = &"Ciscando"
-autoplay = "Ciscando"
-frame_progress = 0.303399
-speed_scale = 0.92
+[node name="Mountain2" type="Sprite2D" parent="."]
+position = Vector2(-707, -756)
+scale = Vector2(2.25426, 2.25426)
+texture = ExtResource("22_iwr0k")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_scale = Vector2(2, 1)
+scroll_offset = Vector2(425, -3075)
+
+[node name="Mountain" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(-192, 388)
+scale = Vector2(0.37432, 0.37432)
+texture = ExtResource("22_iwr0k")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(297, 404)
+position = Vector2(297, -13675)
 position_smoothing_enabled = true
 script = ExtResource("2_24beq")
 
@@ -377,12 +549,18 @@ antialiased = true
 polygon = PackedVector2Array(4, 75, 49, 45, 72, -11, -14, -68, -61, 8)
 uv = PackedVector2Array(36.9372, 98.4958, 81.9372, 68.4958, 104.937, 12.4958, 18.9372, -44.5042, -28.0628, 31.4958)
 
+[node name="Placa" type="Sprite2D" parent="."]
+position = Vector2(160, -8029)
+rotation = -0.785397
+scale = Vector2(0.275173, 0.275173)
+texture = ExtResource("15_jeuff")
+
 [node name="PomboHit" type="Area2D" parent="." node_paths=PackedStringArray("pombo")]
 position = Vector2(213, -5816)
 collision_layer = 3
 script = ExtResource("7_e23p8")
 pombo = NodePath("../PomboPlaying")
-force = Vector2(100, -300)
+force = Vector2(-100, -300)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PomboHit"]
@@ -397,23 +575,23 @@ collision_layer = 2
 collision_mask = 2
 script = ExtResource("8_f44ag")
 buoyancy_force = 360.0
-drag_coefficient = 2.5
+drag_coefficient = 1.715
 angular_drag = 5.0
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lake"]
 position = Vector2(548, 6.15406)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_633mc")
 
 [node name="AirUpper" type="Area2D" parent="."]
-position = Vector2(-711, -10017)
+position = Vector2(-739, -10042)
 scale = Vector2(1.68, 6.72)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("8_kl6fb")
 force = Vector2(2, -0.1)
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AirUpper"]
 position = Vector2(548, -233.737)
@@ -425,19 +603,136 @@ position = Vector2(1.12431, -6.74582)
 scale = Vector2(0.127473, 0.127473)
 texture = ExtResource("8_4i48q")
 
+[node name="PomboDaPraca" parent="." instance=ExtResource("2_m2urk")]
+position = Vector2(185, -13620)
+scale = Vector2(1.77754, 1.78609)
+animation = &"ToFly"
+autoplay = "Ciscando"
+frame_progress = 0.964267
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PomboDaPraca"]
+libraries = {
+"": SubResource("AnimationLibrary_7nhxj")
+}
+autoplay = "new_animation_2"
+
+[node name="Stuck" type="Area2D" parent="."]
+position = Vector2(-361, -12049)
+scale = Vector2(1.68, 6.72)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("12_rb54l")
+force = Vector2(20, -20)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stuck"]
+position = Vector2(510.119, -265.178)
+shape = SubResource("CircleShape2D_s2gjn")
+debug_color = Color(0.309804, 0, 0.580392, 0)
+
 [node name="ScenarioCol1" type="StaticBody2D" parent="."]
-position = Vector2(-957, 1.90735e-06)
+position = Vector2(-959, 1.90735e-06)
 scale = Vector2(1.25505, 1.25505)
 collision_layer = 3
 collision_mask = 0
 
-[node name="Polygon2D" type="CollisionPolygon2D" parent="ScenarioCol1"]
+[node name="Polygon2D2" type="Polygon2D" parent="ScenarioCol1"]
+clip_children = 1
 position = Vector2(946, -62)
 scale = Vector2(0.555, 0.555)
-polygon = PackedVector2Array(-302, 834, -14, 1023, 23, 1187, 142, 1238, 334, 1236, 289, 718, 299.651, 536.662, 289.602, 446.216, 380, 477, 382, 5, 424.56, -1226.31, 105.839, -1489.03, 8.21585, -1678.53, 104.404, -2179.57, 500.649, -2064.73, 513.57, -3260.62, 461.879, -3833.43, 483.422, -3984.19, 446.155, -5080.34, 102.968, -5342.29, 438.908, -5293.48, 488.193, -7302.76, 197.721, -7591.94, 169.008, -7693.87, 494.898, -7576.15, 428.859, -9376.44, 59.899, -9372.14, 35.493, -9485.55, 486.284, -9570.25, 489.164, -10204.8, 456.136, -11139.4, 352.77, -11301.6, 166.136, -11643.3, 431.73, -11583, 431.73, -14910.8, 477.671, -17098.8, 77.1266, -17417.5, 447.522, -17352.9, 483.413, -18052, 483.413, -18764.1, 392.968, -18867.5, 226.433, -19110.1, 471.928, -19038.3, 500.641, -19545.1, -151.14, -19661.4, 391.532, -19654.2, 319.75, -20804.2, 1564.45, -21777.5, 840.898, -18293.3, 1095.01, -14926.7, 1327.58, -11227, 796.393, -9442.52, 1051.94, -8701.72, 872.482, -7131.13, 905.502, -4020.08, 575, 5, 575, 1337, -390, 1329, -404, -6, -477.026, -2270.03, -622.027, -5027.9, -514.353, -7145.48, -622.027, -11619, -850.298, -16360.8, -947.921, -18617.7, -876.139, -21819.1, -333.467, -19390, -79.3521, -19381.5, 291.037, -19381.4, -21.9326, -19252.2, -105.194, -19236.5, -112.307, -19142.9, -158.313, -18537.3, -231.531, -18284.7, -194.424, -17272.6, -158.313, -16287.7, 338.413, -16442.7, 309.701, -16280.4, -105.2, -16000.5, -248.758, -14744.4, -403.813, -14484.5, -421.041, -13736.5, -445.447, -13152.2, -403.813, -11893.1, -221.86, -11281.8, 5.34457, -11475.4, -39.1603, -11255.7, -220.051, -11049, -320.546, -8947.19, -320.546, -8454.76, -324.853, -8159.02, -267.427, -8081.49, 61.3346, -8067.14, -151.14, -7999.66, -327.724, -7932.19, -324.848, -6643.01, 67.0771, -6775.06, -294.705, -6347.24, -313.368, -5056.6, 81.4336, -4785.26, -309.918, -4918.82, -238.714, -3262.05, -46.3385, -3196.01, 29.7505, -2502.59, -230.101, -2160.91, -197.075, -1632.6, -383.709, -1068.39, -220.051, -903.287, -234.402, -642.003, 2.4733, -1120.07, 158.958, -838.683, 82.8692, -491.258, 186.235, 2.60295)
+polygon = PackedVector2Array(-302, 834, -116.685, 1000.37, -80.7939, 947.255, -56.388, 952.998, -14, 1023, 23, 1187, 142, 1238, 334, 1236, 289, 718, 299.651, 536.662, 289.602, 446.216, 380, 477, 382, 5, 424.56, -1226.31, 105.839, -1489.03, 8.21585, -1678.53, 104.404, -2179.57, 500.649, -2064.73, 220.691, -3341.01, 161.829, -3669.77, 502.077, -3735.81, 446.155, -5080.34, 102.968, -5342.29, 438.908, -5293.48, 488.193, -7302.76, 197.721, -7591.94, 169.008, -7693.87, 433.166, -7610.6, 388.661, -9352.04, 59.899, -9372.14, 35.493, -9485.55, 486.284, -9570.25, 489.164, -10204.8, 456.136, -11139.4, 352.77, -11301.6, 166.136, -11643.3, 431.73, -11583, 431.73, -14910.8, 477.671, -17098.8, 77.1266, -17417.5, 447.522, -17352.9, 483.413, -18052, 483.413, -18764.1, 392.968, -18867.5, 226.433, -19110.1, 418.809, -19102.9, 447.522, -19542.2, -151.14, -19661.4, 391.532, -19654.2, 319.75, -20804.2, 1564.45, -21777.5, 840.898, -18293.3, 1095.01, -14926.7, 1327.58, -11227, 796.393, -9442.52, 1051.94, -8701.72, 872.482, -7131.13, 905.502, -4020.08, 575, 5, 575, 1337, 560.938, 2509.23, -373.665, 2504.93, -390, 1329, -404, -6, -477.026, -2270.03, -622.027, -5027.9, -514.353, -7145.48, -622.027, -11619, -850.298, -16360.8, -947.921, -18617.7, -876.139, -21819.1, -333.467, -19390, -79.3521, -19381.5, 291.037, -19381.4, -21.9326, -19252.2, -105.194, -19236.5, -112.307, -19142.9, -158.313, -18537.3, -231.531, -18284.7, -194.424, -17272.6, -158.313, -16287.7, 338.413, -16442.7, 309.701, -16280.4, -105.2, -16000.5, -248.758, -14744.4, -403.813, -14484.5, -421.041, -13736.5, -445.447, -13152.2, -403.813, -11893.1, -221.86, -11281.8, 5.34457, -11475.4, -39.1603, -11255.7, -220.051, -11049, -320.546, -8947.19, -320.546, -8454.76, -324.853, -8159.02, -267.427, -8081.49, 61.3346, -8067.14, -151.14, -7999.66, -276.041, -7861.84, -222.922, -6716.2, 67.0771, -6775.06, -294.705, -6347.24, -313.368, -5056.6, 81.4336, -4785.26, -309.918, -4918.82, -238.714, -3262.05, -46.3385, -3196.01, 29.7505, -2502.59, -230.101, -2160.91, -197.075, -1632.6, -383.709, -1068.39, -220.051, -903.287, -234.402, -642.003, 2.4733, -1120.07, 158.958, -838.683, 82.8692, -491.258, 186.235, 2.60295)
+
+[node name="RockGranulada" type="Sprite2D" parent="ScenarioCol1/Polygon2D2"]
+clip_children = 1
+position = Vector2(955.739, -590.317)
+scale = Vector2(4.07852, 4.07852)
+texture = ExtResource("15_4b3ev")
+
+[node name="TreeFlowersleaves" type="Sprite2D" parent="ScenarioCol1/Polygon2D2"]
+position = Vector2(470.492, -5587.78)
+scale = Vector2(2.31382, 2.31382)
+texture = ExtResource("16_kqewv")
+
+[node name="Treeleaves" type="Sprite2D" parent="ScenarioCol1/Polygon2D2"]
+position = Vector2(-21.9326, -9080.7)
+scale = Vector2(2.62539, 2.62539)
+texture = ExtResource("17_g6nwg")
+
+[node name="Redpainttrated" type="Sprite2D" parent="ScenarioCol1/Polygon2D2"]
+position = Vector2(137.424, -12441.5)
+scale = Vector2(4.33719, 4.33719)
+texture = ExtResource("18_d2kho")
+
+[node name="Rock1" type="Sprite2D" parent="ScenarioCol1/Polygon2D2"]
+position = Vector2(137.424, -17566.8)
+scale = Vector2(1.96496, 1.96496)
+texture = ExtResource("19_nrs3r")
+
+[node name="Trunk2" type="Sprite2D" parent="ScenarioCol1/Polygon2D2"]
+position = Vector2(-327.724, -4572.79)
+scale = Vector2(3.0469, 3.0469)
+texture = ExtResource("20_v761d")
+
+[node name="Trunk" type="Sprite2D" parent="ScenarioCol1/Polygon2D2"]
+position = Vector2(572.423, -4566.81)
+scale = Vector2(2.85748, 2.85748)
+texture = ExtResource("20_v761d")
+
+[node name="PilastraTreated" type="Sprite2D" parent="ScenarioCol1/Polygon2D2"]
+position = Vector2(802.125, -15299.9)
+rotation = -3.11832
+scale = Vector2(3.32319, 3.32319)
+texture = ExtResource("21_dlltn")
+
+[node name="PilastraTreated2" type="Sprite2D" parent="ScenarioCol1/Polygon2D2"]
+position = Vector2(886.828, -17696)
+rotation = -3.13657
+scale = Vector2(3.86378, 3.40053)
+texture = ExtResource("21_dlltn")
+
+[node name="PilastraTreated3" type="Sprite2D" parent="ScenarioCol1/Polygon2D2"]
+position = Vector2(-534.456, -15304.2)
+rotation = -6.1683
+scale = Vector2(3.32319, 3.32319)
+texture = ExtResource("21_dlltn")
+
+[node name="PilastraTreated4" type="Sprite2D" parent="ScenarioCol1/Polygon2D2"]
+position = Vector2(-1217.82, -13953.3)
+rotation = -5.67985
+scale = Vector2(3.32319, 3.32319)
+texture = ExtResource("21_dlltn")
+
+[node name="PilastraTreated5" type="Sprite2D" parent="ScenarioCol1/Polygon2D2"]
+position = Vector2(-571.783, -17464.8)
+rotation = -6.32301
+scale = Vector2(3.32319, 3.32319)
+texture = ExtResource("21_dlltn")
+
+[node name="Grassclose" type="Sprite2D" parent="ScenarioCol1/Polygon2D2"]
+position = Vector2(12.5228, -20446.7)
+scale = Vector2(2.38827, 2.38827)
+texture = ExtResource("22_sbxeq")
+
+[node name="Redpainttrated2" type="Sprite2D" parent="ScenarioCol1/Polygon2D2"]
+position = Vector2(800.69, -11696.4)
+rotation = -2.13801
+scale = Vector2(1.51995, 1.51995)
+texture = ExtResource("18_d2kho")
+
+[node name="Redpainttrated3" type="Sprite2D" parent="ScenarioCol1/Polygon2D2"]
+position = Vector2(-30.5466, -4891.5)
+rotation = -0.6379
+scale = Vector2(1.10355, 0.775918)
+texture = ExtResource("18_d2kho")
+
+[node name="Polygon2D" type="CollisionPolygon2D" parent="ScenarioCol1"]
+visible = false
+position = Vector2(946, -62)
+scale = Vector2(0.555, 0.555)
+polygon = PackedVector2Array(-302, 834, -116.685, 1000.37, -80.7939, 947.255, -56.388, 952.998, -14, 1023, 23, 1187, 142, 1238, 334, 1236, 289, 718, 299.651, 536.662, 289.602, 446.216, 380, 477, 382, 5, 424.56, -1226.31, 105.839, -1489.03, 8.21585, -1678.53, 104.404, -2179.57, 500.649, -2064.73, 220.691, -3341.01, 161.829, -3669.77, 502.077, -3735.81, 446.155, -5080.34, 102.968, -5342.29, 438.908, -5293.48, 488.193, -7302.76, 197.721, -7591.94, 169.008, -7693.87, 433.166, -7610.6, 388.661, -9352.04, 59.899, -9372.14, 35.493, -9485.55, 486.284, -9570.25, 489.164, -10204.8, 456.136, -11139.4, 352.77, -11301.6, 166.136, -11643.3, 431.73, -11583, 431.73, -14910.8, 477.671, -17098.8, 77.1266, -17417.5, 447.522, -17352.9, 483.413, -18052, 483.413, -18764.1, 392.968, -18867.5, 226.433, -19110.1, 418.809, -19102.9, 447.522, -19542.2, -151.14, -19661.4, 391.532, -19654.2, 319.75, -20804.2, 1564.45, -21777.5, 840.898, -18293.3, 1095.01, -14926.7, 1327.58, -11227, 796.393, -9442.52, 1051.94, -8701.72, 872.482, -7131.13, 905.502, -4020.08, 575, 5, 575, 1337, 560.938, 2509.23, -373.665, 2504.93, -390, 1329, -404, -6, -477.026, -2270.03, -622.027, -5027.9, -514.353, -7145.48, -622.027, -11619, -850.298, -16360.8, -947.921, -18617.7, -876.139, -21819.1, -333.467, -19390, -79.3521, -19381.5, 291.037, -19381.4, -21.9326, -19252.2, -105.194, -19236.5, -112.307, -19142.9, -158.313, -18537.3, -231.531, -18284.7, -194.424, -17272.6, -158.313, -16287.7, 338.413, -16442.7, 309.701, -16280.4, -105.2, -16000.5, -248.758, -14744.4, -403.813, -14484.5, -421.041, -13736.5, -445.447, -13152.2, -403.813, -11893.1, -221.86, -11281.8, 5.34457, -11475.4, -39.1603, -11255.7, -220.051, -11049, -320.546, -8947.19, -320.546, -8454.76, -324.853, -8159.02, -267.427, -8081.49, 61.3346, -8067.14, -151.14, -7999.66, -276.041, -7861.84, -222.922, -6716.2, 67.0771, -6775.06, -294.705, -6347.24, -313.368, -5056.6, 81.4336, -4785.26, -309.918, -4918.82, -238.714, -3262.05, -46.3385, -3196.01, 29.7505, -2502.59, -230.101, -2160.91, -197.075, -1632.6, -383.709, -1068.39, -220.051, -903.287, -234.402, -642.003, 2.4733, -1120.07, 158.958, -838.683, 82.8692, -491.258, 186.235, 2.60295)
 
 [node name="Ball" type="RigidBody2D" parent="." groups=["ball"]]
-position = Vector2(108, 404)
+position = Vector2(297, 486)
 collision_layer = 3
 mass = 0.529
 physics_material_override = SubResource("PhysicsMaterial_g77oc")
@@ -490,11 +785,27 @@ autoplay = "new_animation"
 [node name="Gluglu" type="AudioStreamPlayer" parent="PomboPlaying"]
 stream = ExtResource("13_lwdju")
 
-[node name="Placa" type="Sprite2D" parent="."]
-position = Vector2(160, -8029)
-rotation = -0.785397
-scale = Vector2(0.275173, 0.275173)
-texture = ExtResource("15_jeuff")
+[node name="Ventooo" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(425, -13620)
+stream = ExtResource("17_g3r3r")
+volume_db = 1.872
+autoplay = true
+max_distance = 7550.0
+attenuation = 0.40097
+
+[node name="Crab2" type="Sprite2D" parent="."]
+position = Vector2(534, -2692)
+rotation = -0.160988
+scale = Vector2(0.10362, 0.10362)
+texture = ExtResource("19_cwand")
+
+[node name="bubbleRecife" type="Node2D" parent="."]
+position = Vector2(181, 571)
+script = ExtResource("20_6xf7k")
+metadata/_edit_group_ = true
+
+[node name="Bolhinha2" parent="bubbleRecife" instance=ExtResource("19_8stck")]
+script = null
 
 [connection signal="body_entered" from="CharBubble/Center" to="CharBubble" method="_on_center_body_entered"]
 [connection signal="body_entered" from="PomboHit" to="." method="_on_area_2d_body_entered"]
@@ -503,3 +814,6 @@ texture = ExtResource("15_jeuff")
 [connection signal="body_exited" from="Lake" to="Lake" method="_on_body_exited"]
 [connection signal="body_entered" from="AirUpper" to="AirUpper" method="_on_body_entered"]
 [connection signal="body_exited" from="AirUpper" to="AirUpper" method="_on_body_exited"]
+[connection signal="animation_finished" from="PomboDaPraca/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="Stuck" to="Stuck" method="_on_body_entered"]
+[connection signal="body_exited" from="Stuck" to="Stuck" method="_on_body_exited"]

@@ -156,7 +156,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_xdcrw")
 }],
 "loop": true,
-"name": &"new_animation",
+"name": &"ToFly",
 "speed": 5.0
 }]
 
