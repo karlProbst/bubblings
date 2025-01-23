@@ -77,15 +77,15 @@ func should_explode() -> bool:
 func explode():
 	var sound = preload("res://Assets/Sound/bup.mp3")  # Replace with your sound file's path
 	play_sound_effect(sound, self.global_position)
-	spawn_bubble_particle(position)
+	spawn_bubble_particle(get_child(0).global_position)
 	queue_free()
 
 
-func spawn_bubble_particle(position: Vector2) -> void:
+func spawn_bubble_particle(pos) -> void:
 	# Create an instance of the particle scene
 	var bubble_particle = BUBBLEPARTICLE.instantiate()
 	# Set the bubble's position
-	bubble_particle.position = position
+	bubble_particle.position = pos
 	bubble_particle.one_shot = true
 	get_parent().add_child(bubble_particle)
 # Function to get positions of all child nodes named "Point*"
