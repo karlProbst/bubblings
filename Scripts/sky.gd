@@ -1,10 +1,12 @@
 extends Sprite2D
 
 var bubble_scene = preload("res://Scenes/Bubble.tscn")
-var growth = 0
+var growth = 0.7
 var mouse_was_pressed=false
 var StartTriggered=false
 var nBubbles=0
+var trigger=0
+var cooldown=0.1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -12,34 +14,34 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if nBubbles==1:
+	if trigger>0:
+		trigger-=delta
+	if nBubbles>=100:
 		for i in 10:
 				var window_size2 = DisplayServer.window_get_size()
 				var new_bubble = create_bubble(Vector2(randf_range(0,window_size2.x),randf_range(0,window_size2.y)),randf_range(0.2,2.0))
 				# Add the new bubble to the scene tree
 				get_parent().add_child(new_bubble)
 		$AnimationPlayer.play("new_animation_4")
-		nBubbles+=1
-	if StartTriggered and nBubbles==0:
-		if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-			
-			if mouse_was_pressed:
-				var window_size = DisplayServer.window_get_size()
-				var width = window_size.x
-				var height = window_size.y
-				var mouse_position = get_viewport().get_mouse_position()
+		nBubbles=-1
+	
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		
+		if trigger<=0:
+			var window_size = DisplayServer.window_get_size()
+			var width = window_size.x
+			var height = window_size.y
+			var mouse_position = get_viewport().get_mouse_position()
 
-			
-				# Instantiate the scene
-				var new_bubble = create_bubble(mouse_position,growth)
-				# Add the new bubble to the scene tree
-				get_parent().add_child(new_bubble)
-				nBubbles+=1
-			mouse_was_pressed = false
-			growth=0
-		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-			mouse_was_pressed = true
-			growth+=delta
+		
+			# Instantiate the scene
+			var new_bubble = create_bubble(mouse_position,growth)
+			# Add the new bubble to the scene tree
+			get_parent().add_child(new_bubble)
+			nBubbles+=1
+			trigger= cooldown
+	
+
 
 
 func create_bubble(position: Vector2,growth:float) -> Node2D:

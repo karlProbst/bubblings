@@ -1,12 +1,14 @@
-[gd_scene load_steps=64 format=3 uid="uid://bi7h85sd11d31"]
+[gd_scene load_steps=75 format=3 uid="uid://bi7h85sd11d31"]
 
 [ext_resource type="Script" path="res://node_2d.gd" id="1_xdb2r"]
 [ext_resource type="Script" path="res://camera_2d.gd" id="2_24beq"]
 [ext_resource type="PackedScene" uid="uid://5wx1jom1euav" path="res://Scenes/pombo_da_praca.tscn" id="2_m2urk"]
 [ext_resource type="Script" path="res://Scenes/Stages/PomboTomou.gd" id="7_e23p8"]
 [ext_resource type="Texture2D" uid="uid://c2n6qdfg0i23s" path="res://Assets/Images/coquim.png" id="8_4i48q"]
+[ext_resource type="Shader" path="res://Scenes/Stages/Water.gdshader" id="8_clkdw"]
 [ext_resource type="Script" path="res://Scenes/Stages/Water.gd" id="8_f44ag"]
 [ext_resource type="Script" path="res://Air.gd" id="8_kl6fb"]
+[ext_resource type="Script" path="res://Scenes/Stages/elastic_water.gd" id="9_bnrvp"]
 [ext_resource type="AudioStream" uid="uid://d0s7m1sggcu3u" path="res://Assets/Sound/uihhh.mp3" id="9_r8p61"]
 [ext_resource type="Texture2D" uid="uid://6ncg3gcccj7r" path="res://Assets/Images/PomboPlaying.png" id="11_i84t1"]
 [ext_resource type="Texture2D" uid="uid://ycdcf5rrwnnr" path="res://Assets/Images/pomboPlyaingTomou.png" id="11_r6o2u"]
@@ -30,11 +32,11 @@
 [ext_resource type="Script" path="res://Scripts/Crab.gd" id="26_4gsd0"]
 [ext_resource type="Script" path="res://Scenes/Stages/crab_animator.gd" id="27_sn0ny"]
 [ext_resource type="Texture2D" uid="uid://b5vq3quu58hqg" path="res://Assets/Images/Crab3.png" id="29_s12qi"]
-[ext_resource type="PackedScene" uid="uid://drm6rtfp4x1b8" path="res://Scenes/Bubble.tscn" id="29_vt2p8"]
 [ext_resource type="Texture2D" uid="uid://hrocn3auptuu" path="res://Assets/Images/Thank you.png" id="32_361hy"]
 [ext_resource type="Texture2D" uid="uid://qe4oc2ugmmbv" path="res://Assets/Images/Fishboltail.png" id="33_irvq2"]
 [ext_resource type="Script" path="res://Scenes/Stages/fishhead.gd" id="34_owjqh"]
 [ext_resource type="Texture2D" uid="uid://brlmrby1s37k3" path="res://Assets/Images/Fishbolhead.png" id="34_qtrkq"]
+[ext_resource type="PackedScene" uid="uid://dsvbuala2ohc1" path="res://Man.tscn" id="37_6bfrk"]
 
 [sub_resource type="Gradient" id="Gradient_1ipij"]
 interpolation_mode = 2
@@ -63,12 +65,50 @@ radius = 45.1774
 size = Vector2(544, 851.761)
 
 [sub_resource type="Gradient" id="Gradient_p5py3"]
-offsets = PackedFloat32Array(0.00623053, 0.00934579, 0.246106, 1)
-colors = PackedColorArray(0.0980392, 0.756863, 1, 1, 1, 0.812999, 0.940649, 1, 0.0774568, 0.283495, 0.672428, 1, 0.0705882, 0, 0.0862745, 1)
+offsets = PackedFloat32Array(0, 0.00623053, 0.246106, 0.663342)
+colors = PackedColorArray(1, 0.812999, 0.940649, 1, 0.0980392, 0.756863, 1, 1, 0.0774568, 0.283495, 0.672428, 1, 0.0705882, 0, 0.0862745, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_tffsd"]
 gradient = SubResource("Gradient_p5py3")
 fill_to = Vector2(0, 1)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ruex8"]
+friction = 0.0
+rough = true
+absorbent = true
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_by8ls"]
+radius = 0.585938
+height = 5.00005
+
+[sub_resource type="Gradient" id="Gradient_d4xlo"]
+offsets = PackedFloat32Array(0, 0.00542005, 0.723577)
+colors = PackedColorArray(0.29, 0.491167, 1, 1, 0.380384, 0.519116, 1, 1, 0.002, 0, 0.03, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_o7iqp"]
+gradient = SubResource("Gradient_d4xlo")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_d2n64"]
+offsets = PackedFloat32Array(0, 0.0325203, 0.780488, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0.76, 0, 0, 0.239216, 1, 1, 1, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a1621"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5n6kv"]
+width = 128
+height = 1024
+seamless = true
+color_ramp = SubResource("Gradient_d2n64")
+noise = SubResource("FastNoiseLite_a1621")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4y6qn"]
+shader = ExtResource("8_clkdw")
+shader_parameter/param1 = Vector2(1.295, -9.545)
+shader_parameter/param2 = Vector2(1.745, 1.57)
+shader_parameter/param3 = Vector2(0.57, 0.54)
+shader_parameter/iChannel0 = SubResource("GradientTexture2D_o7iqp")
+shader_parameter/iChannel1 = SubResource("NoiseTexture2D_5n6kv")
 
 [sub_resource type="Animation" id="Animation_w7jx2"]
 length = 0.001
@@ -283,6 +323,82 @@ _data = {
 "new_animation": SubResource("Animation_syn4b")
 }
 
+[sub_resource type="Animation" id="Animation_8dfx8"]
+resource_name = "Jump_In"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 2.73333, 3.76667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 2.73333, 3.73333, 3.76667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(602, -2685), Vector2(602, -2685), Vector2(480, -2660), Vector2(482, -2663)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:skew")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333333, 2.73333, 3.73333, 3.76667, 3.93333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.0383972, -0.0383972, -0.200713, 0.29147, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3.73333, 3.76667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.251816, -0.162375]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Crab3:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.0333333, 2.73333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_tt7n3"]
 resource_name = "Jump_Out"
 length = 2.0
@@ -345,6 +461,117 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7csf8"]
+resource_name = "Nhac"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(482, -2663)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.162375]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.10362, 0.10362), Vector2(0.139, 0.139), Vector2(0.104, 0.104)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:skew")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.443314, 0.511381, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0.34, 0.791, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Crab3:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Crab3:skew")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.356047, 0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Crab3:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.237365, -0.153007]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Crab3:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(496, -2684)]
 }
 
 [sub_resource type="Animation" id="Animation_774dr"]
@@ -458,193 +685,6 @@ tracks/8/keys = {
 "values": [-0.153007]
 }
 
-[sub_resource type="Animation" id="Animation_8dfx8"]
-resource_name = "Jump_In"
-length = 4.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:flip_h")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.0333333, 2.73333, 3.76667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.0333333, 2.73333, 3.73333, 3.76667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(602, -2685), Vector2(602, -2685), Vector2(480, -2660), Vector2(482, -2663)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:skew")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.0333333, 2.73333, 3.73333, 3.76667, 3.93333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [-0.0383972, -0.0383972, -0.200713, 0.29147, 0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(3.73333, 3.76667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-0.251816, -0.162375]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../Crab3:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".:self_modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.0333333, 2.73333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_7csf8"]
-resource_name = "Nhac"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(482, -2663)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.162375]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0.10362, 0.10362), Vector2(0.139, 0.139), Vector2(0.104, 0.104)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:skew")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [-0.443314, 0.511381, 0.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:self_modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 0.34, 0.791, 0.215686), Color(1, 1, 1, 0.517647), Color(1, 1, 1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../Crab3:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.166667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, true, false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../Crab3:skew")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-0.356047, 0.0]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("../Crab3:rotation")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-0.237365, -0.153007]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("../Crab3:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(496, -2684)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qnrlq"]
 _data = {
 "Jump_In": SubResource("Animation_8dfx8"),
@@ -656,17 +696,21 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_wcynl"]
 radius = 100.045
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_v4bo0"]
+friction = 0.0
+bounce = 1.0
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pu7u4"]
 radius = 48.0
 height = 96.0
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_06mys"]
-friction = 0.05
+friction = 0.0
 bounce = 1.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rko1y"]
 radius = 135.757
-height = 458.221
+height = 305.485
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_xdb2r")
@@ -698,8 +742,8 @@ scale = Vector2(0.37432, 0.37432)
 texture = ExtResource("22_iwr0k")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(297, -13675)
-zoom = Vector2(0.7, 0.7)
+position = Vector2(260.11, 95.94)
+zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 script = ExtResource("2_24beq")
 
@@ -765,20 +809,14 @@ position = Vector2(548, 6.15406)
 shape = SubResource("RectangleShape2D_633mc")
 
 [node name="TextureRect" type="TextureRect" parent="Lake/CollisionShape2D"]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 texture = SubResource("GradientTexture2D_tffsd")
 
-[node name="TextureRect" type="TextureRect" parent="Lake"]
-offset_left = 274.167
-offset_top = -419.922
-offset_right = 338.167
-offset_bottom = -355.922
-scale = Vector2(7.92634, 12.7804)
-texture = SubResource("GradientTexture2D_tffsd")
-
 [node name="TextureRect2" type="TextureRect" parent="Lake"]
-modulate = Color(1, 1, 1, 0.0705882)
+visible = false
+modulate = Color(1, 1, 1, 0.301961)
 z_index = 1
 z_as_relative = false
 offset_left = 135.833
@@ -786,6 +824,209 @@ offset_top = -419.531
 offset_right = 199.833
 offset_bottom = -355.531
 scale = Vector2(13.5263, 12.7804)
+texture = SubResource("GradientTexture2D_tffsd")
+
+[node name="ElasticWater" type="Node2D" parent="Lake" groups=["ball"]]
+position = Vector2(349.167, -419.531)
+script = ExtResource("9_bnrvp")
+
+[node name="Point1" type="RigidBody2D" parent="Lake/ElasticWater"]
+collision_layer = 0
+collision_mask = 0
+mass = 0.58
+physics_material_override = SubResource("PhysicsMaterial_ruex8")
+gravity_scale = 0.027
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lake/ElasticWater/Point1"]
+z_index = 1
+z_as_relative = false
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_by8ls")
+
+[node name="Point2" type="RigidBody2D" parent="Lake/ElasticWater"]
+position = Vector2(25.8333, 0)
+collision_layer = 0
+collision_mask = 0
+mass = 0.58
+physics_material_override = SubResource("PhysicsMaterial_ruex8")
+gravity_scale = 0.027
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lake/ElasticWater/Point2"]
+z_index = 1
+z_as_relative = false
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_by8ls")
+
+[node name="Point3" type="RigidBody2D" parent="Lake/ElasticWater"]
+position = Vector2(51.6666, 0)
+collision_layer = 0
+collision_mask = 0
+mass = 0.58
+physics_material_override = SubResource("PhysicsMaterial_ruex8")
+gravity_scale = 0.027
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lake/ElasticWater/Point3"]
+z_index = 1
+z_as_relative = false
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_by8ls")
+
+[node name="Point4" type="RigidBody2D" parent="Lake/ElasticWater"]
+position = Vector2(78.3333, 0)
+collision_layer = 0
+collision_mask = 0
+mass = 0.58
+physics_material_override = SubResource("PhysicsMaterial_ruex8")
+gravity_scale = 0.027
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lake/ElasticWater/Point4"]
+z_index = 1
+z_as_relative = false
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_by8ls")
+
+[node name="Point5" type="RigidBody2D" parent="Lake/ElasticWater"]
+position = Vector2(105.833, 0)
+collision_layer = 0
+collision_mask = 0
+mass = 0.58
+physics_material_override = SubResource("PhysicsMaterial_ruex8")
+gravity_scale = 0.027
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lake/ElasticWater/Point5"]
+z_index = 1
+z_as_relative = false
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_by8ls")
+
+[node name="Point6" type="RigidBody2D" parent="Lake/ElasticWater"]
+position = Vector2(132.5, 0)
+collision_layer = 0
+collision_mask = 0
+mass = 0.58
+physics_material_override = SubResource("PhysicsMaterial_ruex8")
+gravity_scale = 0.027
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lake/ElasticWater/Point6"]
+z_index = 1
+z_as_relative = false
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_by8ls")
+
+[node name="Point7" type="RigidBody2D" parent="Lake/ElasticWater"]
+position = Vector2(160.833, 0)
+collision_layer = 0
+collision_mask = 0
+mass = 0.58
+physics_material_override = SubResource("PhysicsMaterial_ruex8")
+gravity_scale = 0.027
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lake/ElasticWater/Point7"]
+z_index = 1
+z_as_relative = false
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_by8ls")
+
+[node name="Point8" type="RigidBody2D" parent="Lake/ElasticWater"]
+position = Vector2(186.667, 0)
+collision_layer = 0
+collision_mask = 0
+mass = 0.58
+physics_material_override = SubResource("PhysicsMaterial_ruex8")
+gravity_scale = 0.027
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lake/ElasticWater/Point8"]
+z_index = 1
+z_as_relative = false
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_by8ls")
+
+[node name="Point9" type="RigidBody2D" parent="Lake/ElasticWater"]
+position = Vector2(217.5, 0)
+collision_layer = 0
+collision_mask = 0
+mass = 0.58
+physics_material_override = SubResource("PhysicsMaterial_ruex8")
+gravity_scale = 0.027
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lake/ElasticWater/Point9"]
+z_index = 1
+z_as_relative = false
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_by8ls")
+
+[node name="PinJoint2D10" type="PinJoint2D" parent="Lake/ElasticWater"]
+position = Vector2(-9.16669, 0)
+node_a = NodePath("../../../ScenarioCol1")
+node_b = NodePath("../Point1")
+softness = 1.51
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Lake/ElasticWater"]
+position = Vector2(13.3333, 0)
+node_a = NodePath("../Point1")
+node_b = NodePath("../Point2")
+softness = 1.51
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="Lake/ElasticWater"]
+position = Vector2(39.1666, 0)
+node_a = NodePath("../Point2")
+node_b = NodePath("../Point3")
+softness = 1.51
+
+[node name="PinJoint2D3" type="PinJoint2D" parent="Lake/ElasticWater"]
+position = Vector2(65, 0)
+node_a = NodePath("../Point3")
+node_b = NodePath("../Point4")
+softness = 1.51
+
+[node name="PinJoint2D4" type="PinJoint2D" parent="Lake/ElasticWater"]
+position = Vector2(92.5, 0.195313)
+node_a = NodePath("../Point4")
+node_b = NodePath("../Point5")
+softness = 1.51
+
+[node name="PinJoint2D5" type="PinJoint2D" parent="Lake/ElasticWater"]
+position = Vector2(119.167, 0)
+node_a = NodePath("../Point5")
+node_b = NodePath("../Point6")
+softness = 1.51
+
+[node name="PinJoint2D6" type="PinJoint2D" parent="Lake/ElasticWater"]
+position = Vector2(146.667, 0)
+node_a = NodePath("../Point6")
+node_b = NodePath("../Point7")
+softness = 1.51
+
+[node name="PinJoint2D7" type="PinJoint2D" parent="Lake/ElasticWater"]
+position = Vector2(173.333, 0)
+node_a = NodePath("../Point7")
+node_b = NodePath("../Point8")
+softness = 1.51
+
+[node name="PinJoint2D8" type="PinJoint2D" parent="Lake/ElasticWater"]
+position = Vector2(202.5, 0)
+node_a = NodePath("../Point8")
+node_b = NodePath("../Point9")
+softness = 1.51
+
+[node name="PinJoint2D9" type="PinJoint2D" parent="Lake/ElasticWater"]
+position = Vector2(238.333, 0)
+node_a = NodePath("../Point9")
+node_b = NodePath("../../../ScenarioCol1")
+softness = 1.51
+
+[node name="WaterPolygon" type="Polygon2D" parent="Lake/ElasticWater"]
+self_modulate = Color(1, 1, 1, 0.796078)
+clip_children = 1
+polygon = PackedVector2Array(-50, -2.53906, 445.833, 0.195313, 436.667, 688.672, -50.8334, 688.672)
+
+[node name="TextureRect3" type="TextureRect" parent="Lake/ElasticWater/WaterPolygon"]
+material = SubResource("ShaderMaterial_4y6qn")
+offset_left = -75.0
+offset_top = -64.4531
+offset_right = -11.0
+offset_bottom = -0.453148
+scale = Vector2(7.92634, 12.7804)
 texture = SubResource("GradientTexture2D_tffsd")
 
 [node name="AirUpper" type="Area2D" parent="."]
@@ -848,7 +1089,7 @@ metadata/_edit_group_ = true
 clip_children = 1
 position = Vector2(946, -62)
 scale = Vector2(0.555, 0.555)
-polygon = PackedVector2Array(-302, 834, -116.685, 1000.37, -80.7939, 947.255, -56.388, 952.998, -14, 1023, 23, 1187, 142, 1238, 334, 1236, 289, 718, 299.651, 536.662, 289.602, 446.216, 380, 477, 382, 5, 424.56, -1226.31, 105.839, -1489.03, 8.21585, -1678.53, 104.404, -2179.57, 500.649, -2064.73, 220.691, -3341.01, 161.829, -3669.77, 502.077, -3735.81, 460.443, -5162.83, 179.057, -5254.72, 102.968, -5342.29, 438.908, -5293.48, 488.193, -7302.76, 197.721, -7591.94, 169.008, -7693.87, 467.621, -7537.38, 404.453, -9341.99, 347.027, -9356.34, 59.899, -9372.14, 34.0574, -9413.77, 302.522, -9423.82, 433.166, -9515.7, 489.164, -10204.8, 456.136, -11139.4, 352.77, -11301.6, 117.325, -11627.5, 163.265, -11660.5, 431.73, -11583, 431.73, -14910.8, 477.671, -17098.8, 77.1266, -17417.5, 447.522, -17352.9, 483.413, -18052, 483.413, -18764.1, 392.968, -18867.5, 226.433, -19110.1, 418.809, -19102.9, 447.522, -19542.2, -151.14, -19661.4, 391.532, -19654.2, 319.75, -20804.2, 1564.45, -21777.5, 840.898, -18293.3, 1095.01, -14926.7, 1327.58, -11227, 796.393, -9442.52, 1051.94, -8701.72, 908.363, -7128.23, 905.502, -4020.08, 754.75, -36.1594, 744.7, 1403.79, 809.304, 2644.18, -676.585, 2598.24, -659.357, 1313.34, -686.635, -128.04, -731.14, -2324.57, -787.13, -5040.81, -632.08, -7174.17, -622.027, -11619, -850.298, -16360.8, -947.921, -18617.7, -876.139, -21819.1, -333.467, -19390, -79.3521, -19381.5, 291.037, -19381.4, -21.9326, -19252.2, -105.194, -19236.5, -112.307, -19142.9, -158.313, -18537.3, -231.531, -18284.7, -194.424, -17272.6, -158.313, -16287.7, 338.413, -16442.7, 309.701, -16280.4, -105.2, -16000.5, -248.758, -14744.4, -403.813, -14484.5, -421.041, -13736.5, -445.447, -13152.2, -403.813, -11893.1, -221.86, -11281.8, 54.1564, -11501.2, 78.5623, -11455.3, -39.1603, -11255.7, -220.051, -11049, -320.546, -8947.19, -320.546, -8454.76, -324.853, -8159.02, -267.427, -8081.49, 61.3346, -8067.14, 87.1761, -8019.76, -151.14, -7999.66, -276.041, -7861.84, -227.229, -6673.13, 91.483, -6849.71, 67.0771, -6775.06, -158.319, -6604.22, -294.705, -6347.24, -313.368, -5056.6, -207.13, -4878.58, 54.1564, -4834.07, 32.6218, -4786.7, -296.14, -4795.31, -238.714, -3262.05, -46.3385, -3196.01, 29.7505, -2502.59, -230.101, -2160.91, -197.075, -1632.6, -383.709, -1068.39, -220.051, -903.287, -234.402, -642.003, 2.4733, -1120.07, 158.958, -838.683, 82.8692, -491.258, 186.235, 2.60295)
+polygon = PackedVector2Array(-302, 834, -116.685, 1000.37, -80.7939, 947.255, -56.388, 952.998, -14, 1023, 23, 1187, 142, 1238, 334, 1236, 289, 718, 299.651, 536.662, 289.602, 446.216, 380, 477, 382, 5, 424.56, -1226.31, 105.839, -1489.03, 8.21585, -1678.53, 104.404, -2179.57, 500.649, -2064.73, 220.691, -3341.01, 161.829, -3669.77, 502.077, -3735.81, 474.799, -5086.75, 75.691, -5170.01, 28.3148, -5238.92, 469.057, -5175.76, 488.193, -7302.76, 197.721, -7591.94, 169.008, -7693.87, 467.621, -7537.38, 404.453, -9341.99, 347.027, -9356.34, 59.899, -9372.14, 34.0574, -9413.77, 302.522, -9423.82, 433.166, -9515.7, 489.164, -10204.8, 456.136, -11139.4, 352.77, -11301.6, 117.325, -11627.5, 163.265, -11660.5, 423.116, -11633.3, 431.73, -14910.8, 477.671, -17098.8, 77.1266, -17417.5, 447.522, -17352.9, 483.413, -18052, 483.413, -18764.1, 392.968, -18867.5, -39.1603, -19065.6, 316.879, -19095.7, 418.809, -19102.9, 447.522, -19542.2, -151.14, -19661.4, 391.532, -19654.2, 319.75, -20804.2, 908.363, -21128.6, 840.898, -18293.3, 1095.01, -14926.7, 1327.58, -11227, 796.393, -9442.52, 1051.94, -8701.72, 908.363, -7128.23, 905.502, -4020.08, 754.75, -36.1594, 744.7, 1403.79, 809.304, 2644.18, -676.585, 2598.24, -659.357, 1313.34, -686.635, -128.04, -731.14, -2324.57, -787.13, -5040.81, -788.565, -7281.84, -666.536, -11634.7, -739.753, -16320.6, -568.912, -18586.1, -876.139, -21819.1, -333.467, -19390, -79.3521, -19381.5, 291.037, -19381.4, -21.9326, -19252.2, -105.194, -19236.5, -112.307, -19142.9, -158.313, -18537.3, -231.531, -18284.7, -194.424, -17272.6, -158.313, -16287.7, 338.413, -16442.7, 309.701, -16280.4, -105.2, -16000.5, -248.758, -14744.4, -403.813, -14484.5, -421.041, -13736.5, -445.447, -13152.2, -403.813, -11893.1, -255.942, -11330.4, 54.1564, -11501.2, 78.5623, -11455.3, -39.1603, -11255.7, -220.051, -11049, -320.546, -8947.19, -320.546, -8454.76, -324.853, -8159.02, -267.427, -8081.49, 61.3346, -8067.14, 87.1761, -8019.76, -151.14, -7999.66, -276.041, -7861.84, -227.229, -6673.13, 91.483, -6849.71, 67.0771, -6775.06, -158.319, -6604.22, -294.705, -6347.24, -313.368, -5056.6, -321.982, -4687.64, -93.7147, -4628.78, -161.19, -4556.99, -291.833, -4433.53, -238.714, -3262.05, -46.3385, -3196.01, 29.7505, -2502.59, -230.101, -2160.91, -197.075, -1632.6, -383.709, -1068.39, -220.051, -903.287, -234.402, -642.003, 2.4733, -1120.07, 158.958, -838.683, 82.8692, -491.258, 186.235, 2.60295)
 
 [node name="RockGranulada" type="Sprite2D" parent="ScenarioCol1/Polygon2D2"]
 clip_children = 1
@@ -857,7 +1098,7 @@ scale = Vector2(4.07852, 4.07852)
 texture = ExtResource("15_4b3ev")
 
 [node name="TreeFlowersleaves" type="Sprite2D" parent="ScenarioCol1/Polygon2D2"]
-position = Vector2(470.492, -5587.78)
+position = Vector2(-82.2297, -7007.63)
 scale = Vector2(2.31382, 2.31382)
 texture = ExtResource("16_kqewv")
 
@@ -977,13 +1218,13 @@ position = Vector2(390.096, -21141.5)
 scale = Vector2(2.70829, 2.70829)
 texture = ExtResource("20_v761d")
 
-[node name="Polygon2D3" type="CollisionPolygon2D" parent="ScenarioCol1"]
+[node name="Polygon2D4" type="CollisionPolygon2D" parent="ScenarioCol1"]
 position = Vector2(946, -62)
 scale = Vector2(0.555, 0.555)
-polygon = PackedVector2Array(-302, 834, -116.685, 1000.37, -80.7939, 947.255, -56.388, 952.998, -14, 1023, 23, 1187, 142, 1238, 334, 1236, 289, 718, 299.651, 536.662, 289.602, 446.216, 380, 477, 382, 5, 424.56, -1226.31, 105.839, -1489.03, 8.21585, -1678.53, 104.404, -2179.57, 500.649, -2064.73, 220.691, -3341.01, 161.829, -3669.77, 502.077, -3735.81, 460.443, -5162.83, 179.057, -5254.72, 102.968, -5342.29, 438.908, -5293.48, 488.193, -7302.76, 197.721, -7591.94, 169.008, -7693.87, 467.621, -7537.38, 404.453, -9341.99, 347.027, -9356.34, 59.899, -9372.14, 34.0574, -9413.77, 302.522, -9423.82, 433.166, -9515.7, 489.164, -10204.8, 456.136, -11139.4, 352.77, -11301.6, 117.325, -11627.5, 163.265, -11660.5, 431.73, -11583, 431.73, -14910.8, 477.671, -17098.8, 77.1266, -17417.5, 447.522, -17352.9, 483.413, -18052, 483.413, -18764.1, 392.968, -18867.5, 226.433, -19110.1, 418.809, -19102.9, 447.522, -19542.2, -151.14, -19661.4, 391.532, -19654.2, 319.75, -20804.2, 1564.45, -21777.5, 840.898, -18293.3, 1095.01, -14926.7, 1327.58, -11227, 796.393, -9442.52, 1051.94, -8701.72, 872.482, -7131.13, 905.502, -4020.08, 575, 5, 575, 1337, 560.938, 2509.23, -373.665, 2504.93, -390, 1329, -404, -6, -477.026, -2270.03, -622.027, -5027.9, -514.353, -7145.48, -622.027, -11619, -850.298, -16360.8, -947.921, -18617.7, -876.139, -21819.1, -333.467, -19390, -79.3521, -19381.5, 291.037, -19381.4, -21.9326, -19252.2, -105.194, -19236.5, -112.307, -19142.9, -158.313, -18537.3, -231.531, -18284.7, -194.424, -17272.6, -158.313, -16287.7, 338.413, -16442.7, 309.701, -16280.4, -105.2, -16000.5, -248.758, -14744.4, -403.813, -14484.5, -421.041, -13736.5, -445.447, -13152.2, -403.813, -11893.1, -221.86, -11281.8, 54.1564, -11501.2, 78.5623, -11455.3, -39.1603, -11255.7, -220.051, -11049, -320.546, -8947.19, -320.546, -8454.76, -324.853, -8159.02, -267.427, -8081.49, 61.3346, -8067.14, 87.1761, -8019.76, -151.14, -7999.66, -276.041, -7861.84, -227.229, -6673.13, 91.483, -6849.71, 67.0771, -6775.06, -158.319, -6604.22, -294.705, -6347.24, -313.368, -5056.6, -207.13, -4878.58, 54.1564, -4834.07, 32.6218, -4786.7, -296.14, -4795.31, -238.714, -3262.05, -46.3385, -3196.01, 29.7505, -2502.59, -230.101, -2160.91, -197.075, -1632.6, -383.709, -1068.39, -220.051, -903.287, -234.402, -642.003, 2.4733, -1120.07, 158.958, -838.683, 82.8692, -491.258, 186.235, 2.60295)
+polygon = PackedVector2Array(-302, 834, -116.685, 1000.37, -80.7939, 947.255, -56.388, 952.998, -14, 1023, 23, 1187, 142, 1238, 334, 1236, 289, 718, 299.651, 536.662, 289.602, 446.216, 380, 477, 382, 5, 424.56, -1226.31, 105.839, -1489.03, 8.21585, -1678.53, 104.404, -2179.57, 500.649, -2064.73, 220.691, -3341.01, 161.829, -3669.77, 502.077, -3735.81, 474.799, -5086.75, 75.691, -5170.01, 28.3148, -5238.92, 469.057, -5175.76, 488.193, -7302.76, 197.721, -7591.94, 169.008, -7693.87, 467.621, -7537.38, 404.453, -9341.99, 347.027, -9356.34, 59.899, -9372.14, 34.0574, -9413.77, 302.522, -9423.82, 433.166, -9515.7, 489.164, -10204.8, 456.136, -11139.4, 352.77, -11301.6, 117.325, -11627.5, 163.265, -11660.5, 423.116, -11633.3, 431.73, -14910.8, 477.671, -17098.8, 77.1266, -17417.5, 447.522, -17352.9, 483.413, -18052, 483.413, -18764.1, 392.968, -18867.5, -39.1603, -19065.6, 316.879, -19095.7, 418.809, -19102.9, 447.522, -19542.2, -151.14, -19661.4, 391.532, -19654.2, 319.75, -20804.2, 908.363, -21128.6, 840.898, -18293.3, 1095.01, -14926.7, 1327.58, -11227, 796.393, -9442.52, 1051.94, -8701.72, 908.363, -7128.23, 905.502, -4020.08, 754.75, -36.1594, 744.7, 1403.79, 809.304, 2644.18, -676.585, 2598.24, -659.357, 1313.34, -686.635, -128.04, -731.14, -2324.57, -787.13, -5040.81, -788.565, -7281.84, -666.536, -11634.7, -739.753, -16320.6, -568.912, -18586.1, -876.139, -21819.1, -333.467, -19390, -79.3521, -19381.5, 291.037, -19381.4, -21.9326, -19252.2, -105.194, -19236.5, -112.307, -19142.9, -158.313, -18537.3, -231.531, -18284.7, -194.424, -17272.6, -158.313, -16287.7, 338.413, -16442.7, 309.701, -16280.4, -105.2, -16000.5, -248.758, -14744.4, -403.813, -14484.5, -421.041, -13736.5, -445.447, -13152.2, -403.813, -11893.1, -255.942, -11330.4, 54.1564, -11501.2, 78.5623, -11455.3, -39.1603, -11255.7, -220.051, -11049, -320.546, -8947.19, -320.546, -8454.76, -324.853, -8159.02, -267.427, -8081.49, 61.3346, -8067.14, 87.1761, -8019.76, -151.14, -7999.66, -276.041, -7861.84, -227.229, -6673.13, 91.483, -6849.71, 67.0771, -6775.06, -158.319, -6604.22, -294.705, -6347.24, -313.368, -5056.6, -321.982, -4687.64, -93.7147, -4628.78, -161.19, -4556.99, -291.833, -4433.53, -238.714, -3262.05, -46.3385, -3196.01, 29.7505, -2502.59, -230.101, -2160.91, -197.075, -1632.6, -383.709, -1068.39, -220.051, -903.287, -234.402, -642.003, 2.4733, -1120.07, 158.958, -838.683, 82.8692, -491.258, 186.235, 2.60295)
 
 [node name="Ball" type="RigidBody2D" parent="." groups=["ball"]]
-position = Vector2(346, 734)
+position = Vector2(268, 464)
 collision_layer = 3
 mass = 0.529
 physics_material_override = SubResource("PhysicsMaterial_g77oc")
@@ -1060,10 +1301,6 @@ autoplay = true
 max_distance = 3175.0
 attenuation = 0.103777
 
-[node name="Bubble" parent="." instance=ExtResource("29_vt2p8")]
-position = Vector2(251, -2894)
-scale = Vector2(0.696553, 0.696553)
-
 [node name="bubbleRecife" type="Node2D" parent="."]
 position = Vector2(181, 571)
 script = ExtResource("20_6xf7k")
@@ -1105,56 +1342,69 @@ texture = ExtResource("29_s12qi")
 position = Vector2(472, -2728)
 shape = SubResource("CircleShape2D_wcynl")
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(204, 456)
+[node name="Dumbfish" type="Node2D" parent="."]
+position = Vector2(191, 308)
+metadata/_edit_group_ = true
 
-[node name="GrooveJoint2D" type="PinJoint2D" parent="Node2D"]
+[node name="GrooveJoint2D" type="PinJoint2D" parent="Dumbfish"]
 node_a = NodePath("../RigidTail")
 node_b = NodePath("../RigidHead")
-angular_limit_lower = 1.5708
-angular_limit_upper = 3.14159
-motor_enabled = true
+angular_limit_enabled = true
+angular_limit_lower = -3.14159
 
-[node name="RigidTail" type="RigidBody2D" parent="Node2D"]
-mass = 0.065
-gravity_scale = 0.018
+[node name="RigidTail" type="RigidBody2D" parent="Dumbfish"]
+position = Vector2(4, 0)
+mass = 0.612
+physics_material_override = SubResource("PhysicsMaterial_v4bo0")
+gravity_scale = 0.136
 
-[node name="Fishboltail" type="Sprite2D" parent="Node2D/RigidTail"]
+[node name="Fishboltail" type="Sprite2D" parent="Dumbfish/RigidTail"]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("33_irvq2")
 offset = Vector2(-216.685, 49.9)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/RigidTail"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dumbfish/RigidTail"]
 position = Vector2(-14, 0)
 scale = Vector2(0.25, 0.25)
 shape = SubResource("CapsuleShape2D_pu7u4")
 
-[node name="RigidHead" type="RigidBody2D" parent="Node2D"]
+[node name="RigidHead" type="RigidBody2D" parent="Dumbfish" groups=["dumbfish"]]
 mass = 0.553
 physics_material_override = SubResource("PhysicsMaterial_06mys")
-gravity_scale = 0.158
+gravity_scale = -0.781
 center_of_mass_mode = 1
 center_of_mass = Vector2(10, 0)
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("34_owjqh")
 
-[node name="Fishbolhead" type="Sprite2D" parent="Node2D/RigidHead"]
+[node name="Fishbolhead" type="Sprite2D" parent="Dumbfish/RigidHead"]
 scale = Vector2(0.07, 0.07)
 texture = ExtResource("34_qtrkq")
 offset = Vector2(39.83, 165.6)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/RigidHead"]
-position = Vector2(30, -1.90706e-06)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dumbfish/RigidHead"]
+position = Vector2(44, 2)
 rotation = -1.56992
 scale = Vector2(0.117851, 0.117851)
 shape = SubResource("CapsuleShape2D_rko1y")
+
+[node name="RayCast2D" type="RayCast2D" parent="Dumbfish"]
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="Man" parent="." instance=ExtResource("37_6bfrk")]
+position = Vector2(81, -3333)
 
 [connection signal="body_entered" from="PomboHit" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="PomboHit" to="PomboHit" method="_on_body_entered"]
 [connection signal="body_entered" from="Lake" to="Lake" method="_on_body_entered"]
 [connection signal="body_exited" from="Lake" to="Lake" method="_on_body_exited"]
+[connection signal="body_entered" from="Lake/ElasticWater/Point1" to="Lake/ElasticWater" method="_on_point_1_body_entered"]
 [connection signal="body_entered" from="AirUpper" to="AirUpper" method="_on_body_entered"]
 [connection signal="body_exited" from="AirUpper" to="AirUpper" method="_on_body_exited"]
 [connection signal="animation_finished" from="PomboDaPraca/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="EndVictoryStuck" to="EndVictoryStuck" method="_on_body_entered"]
 [connection signal="body_exited" from="EndVictoryStuck" to="EndVictoryStuck" method="_on_body_exited"]
 [connection signal="body_entered" from="CrabArea2D" to="CrabArea2D" method="_on_body_entered"]
+[connection signal="body_entered" from="Dumbfish/RigidHead" to="Dumbfish/RigidHead" method="_on_body_entered"]

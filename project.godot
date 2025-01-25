@@ -33,6 +33,8 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 bubble=""
 ball=""
+dumbfish=""
+anzol=""
 
 [input]
 

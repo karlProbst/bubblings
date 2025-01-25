@@ -1,6 +1,7 @@
 extends Area2D
 var getback=0
 var animlock=false
+var slowlock = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -29,9 +30,13 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("ball") and getback==0:
 		body.apply_central_force(Vector2(-35,-5))
 		$CrabAnimator.play("Jump_Out")
-		$CrabAnimator.speed_scale=11
+		
 		animlock=false
-		slow_down_simulation(0.03)
+		if not slowlock:
+			$CrabAnimator.speed_scale=11
+			slow_down_simulation(0.03)
+			slowlock=true
+			
 		getback=0.3
 		 
 		

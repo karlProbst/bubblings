@@ -325,5 +325,6 @@ initial_velocity_min = 428.57
 initial_velocity_max = 428.57
 
 [node name="ThankYou" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(236, 997)
 texture = ExtResource("8_m5lm5")
