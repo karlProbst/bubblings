@@ -20,6 +20,8 @@ func _physics_process(delta: float) -> void:
 		if body.is_in_group("ball"):
 			body.linear_velocity = Vector2.ZERO  # Stops linear movement
 			body.angular_velocity = 0  # Stops angular rotation
+			get_parent().get_node("Camera2D/Node").stop_timer()
 			get_parent().get_node("PomboDaPraca/AnimationPlayer").play("get")
+			
 		if body:
 			body.apply_central_impulse(force)

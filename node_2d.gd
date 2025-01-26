@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 			if mouse_was_pressed:
 
 				var mouse_position = get_global_mouse_position()
-				var new_bubble = create_bubble(mouse_position,1)
+				var new_bubble = create_bubble(mouse_position,0.72)
 				add_child(new_bubble)
 				trigger=cooldown
 	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
@@ -68,7 +68,7 @@ func create_bubble(position: Vector2,growth:float) -> Node2D:
 	var bubble_instance = bubble_scene.instantiate()
 	# Set the bubble's position
 	bubble_instance.position = position
-	bubble_instance.scale = Vector2(0.6,0.6)
+	bubble_instance.scale = Vector2(growth,growth)
 	return bubble_instance
 
 

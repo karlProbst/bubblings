@@ -1,155 +1,30 @@
-[gd_scene load_steps=18 format=3 uid="uid://07c7wnt7vdll"]
+[gd_scene load_steps=19 format=3 uid="uid://07c7wnt7vdll"]
 
 [ext_resource type="Texture2D" uid="uid://bi2m5egvtx4nn" path="res://Assets/Images/opening/Sky.png" id="1_d4ocg"]
-[ext_resource type="Texture2D" uid="uid://camxoooubjhdt" path="res://Assets/Images/opening/text.png" id="2_dyb2f"]
 [ext_resource type="Script" path="res://Scripts/sky.gd" id="2_kc0nj"]
+[ext_resource type="Texture2D" uid="uid://bwhkjoxjqxgev" path="res://Assets/Images/opening/Welcome.png" id="3_18j3d"]
 [ext_resource type="PackedScene" uid="uid://5wx1jom1euav" path="res://Scenes/pombo_da_praca.tscn" id="4_70typ"]
+[ext_resource type="Texture2D" uid="uid://dh1bm5grmeq46" path="res://Assets/Images/cherry.png" id="5_2cx01"]
 [ext_resource type="Texture2D" uid="uid://c2n6qdfg0i23s" path="res://Assets/Images/coquim.png" id="5_2m5dg"]
-[ext_resource type="AudioStream" uid="uid://tb218hr4u014" path="res://gelatina.mp3" id="6_xd4n1"]
-[ext_resource type="Texture2D" uid="uid://i6spb5gwo8j8" path="res://Assets/Images/cerejaa.png" id="7_lsgwj"]
+[ext_resource type="AudioStream" uid="uid://dve81bxcpq0lo" path="res://Assets/Sound/Mcrabmenu.mp3" id="7_ikas8"]
+[ext_resource type="Texture2D" uid="uid://cf2st7u8segkm" path="res://Assets/Images/opening/Click tap.png" id="8_djbct"]
 
 [sub_resource type="Animation" id="Animation_bbrxk"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sky:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(241, 1209)]
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sky:position:x")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(243, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sky:position:y")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-272, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("PomboDaPraca:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-141, 554)]
-}
 
 [sub_resource type="Animation" id="Animation_vtefd"]
 resource_name = "new_animation"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sky:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.366021, 1),
-"update": 0,
-"values": [Vector2(241, 1209), Vector2(246, 853)]
-}
 
 [sub_resource type="Animation" id="Animation_6lol3"]
 resource_name = "new_animation_2"
 length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sky:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(246, 853), Vector2(242.845, 529)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PomboDaPraca:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 4.06667),
-"transitions": PackedFloat32Array(1, 1.56917),
-"update": 0,
-"values": [Vector2(-481.92, 300), Vector2(904.235, 653.39)]
-}
 
 [sub_resource type="Animation" id="Animation_r6q3u"]
 resource_name = "new_animation_3"
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = false
-tracks/0/path = NodePath("Sky:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(242.845, -0.25, 0, 0.25, 0, 243, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sky:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(529, -0.25, 0, 0.25, 0, -272, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
 
 [sub_resource type="Animation" id="Animation_fngnn"]
 resource_name = "new_animation_4"
 length = 5.0
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = false
-tracks/0/path = NodePath("Sky:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(243, -0.25, 0, 0.25, 0, 207, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 9.96667)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sky:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(-272, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -1000, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 4.96667, 9.96667)
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_82rq0"]
 _data = {
@@ -178,44 +53,26 @@ radius = 18.1108
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Sky" type="Sprite2D" parent="."]
-position = Vector2(243, -272)
+[node name="Sky" type="Sprite2D" parent="." node_paths=PackedStringArray("clicktap")]
+position = Vector2(288, 1209)
 rotation = 1.57079
 scale = Vector2(1.18304, 1.30304)
 texture = ExtResource("1_d4ocg")
 script = ExtResource("2_kc0nj")
+clicktap = NodePath("../clicktap")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sky"]
 root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_82rq0")
 }
-autoplay = "new_animation"
+autoplay = "new_animation_2"
 
-[node name="Text" type="Sprite2D" parent="Sky"]
-position = Vector2(438.701, 2.5368)
-scale = Vector2(0.845281, 0.845281)
-texture = ExtResource("2_dyb2f")
-
-[node name="PlayButton" type="Button" parent="Sky"]
-offset_left = -107.351
-offset_top = 35.5016
-offset_right = -59.3508
-offset_bottom = 89.5016
-rotation = -1.5708
-text = "Play?
-
-"
-
-[node name="GotButton" type="Button" parent="Sky"]
-offset_left = 167.366
-offset_top = 49.8719
-offset_right = 223.366
-offset_bottom = 103.872
-rotation = -1.5708
-text = "Got It!
-
-"
+[node name="Welcome" type="Sprite2D" parent="Sky"]
+position = Vector2(-40.5735, 13.8136)
+rotation = -1.57079
+scale = Vector2(0.767436, 0.84528)
+texture = ExtResource("3_18j3d")
 
 [node name="TextureRect" type="TextureRect" parent="Sky"]
 offset_left = 1005.88
@@ -227,7 +84,7 @@ scale = Vector2(8.68, 47.7149)
 texture = SubResource("GradientTexture2D_r4q6h")
 
 [node name="PomboDaPraca" parent="." instance=ExtResource("4_70typ")]
-position = Vector2(-141, 554)
+position = Vector2(-481.92, 300)
 rotation = 0.261799
 scale = Vector2(0.876877, 0.881096)
 autoplay = "Flying"
@@ -242,6 +99,7 @@ collision_layer = 3
 collision_mask = 3
 mass = 0.952
 physics_material_override = SubResource("PhysicsMaterial_6ls6l")
+gravity_scale = 0.1
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
@@ -249,7 +107,13 @@ light_mask = 3
 visibility_layer = 0
 shape = SubResource("CircleShape2D_gjn0s")
 
+[node name="Cherry" type="Sprite2D" parent="Ball"]
+position = Vector2(-5, 8)
+scale = Vector2(0.195238, 0.195238)
+texture = ExtResource("5_2cx01")
+
 [node name="fdsdf" type="Polygon2D" parent="Ball"]
+visible = false
 clip_children = 1
 position = Vector2(-8, 15)
 scale = Vector2(0.889441, 0.889441)
@@ -260,15 +124,332 @@ position = Vector2(1.12431, -6.74582)
 scale = Vector2(0.127473, 0.127473)
 texture = ExtResource("5_2m5dg")
 
-[node name="Gelatina" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(-312, 549)
-stream = ExtResource("6_xd4n1")
+[node name="Ball2" type="RigidBody2D" parent="." groups=["ball"]]
+z_index = 5
+z_as_relative = false
+position = Vector2(268, -90)
+collision_layer = 3
+collision_mask = 3
+mass = 0.952
+physics_material_override = SubResource("PhysicsMaterial_6ls6l")
+gravity_scale = 0.1
+metadata/_edit_group_ = true
 
-[node name="Cerejaa" type="Sprite2D" parent="."]
-position = Vector2(369, 233)
-texture = ExtResource("7_lsgwj")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball2"]
+light_mask = 3
+visibility_layer = 0
+shape = SubResource("CircleShape2D_gjn0s")
+
+[node name="Cherry" type="Sprite2D" parent="Ball2"]
+position = Vector2(-5, 8)
+scale = Vector2(0.195238, 0.195238)
+texture = ExtResource("5_2cx01")
+
+[node name="fdsdf" type="Polygon2D" parent="Ball2"]
+visible = false
+clip_children = 1
+position = Vector2(-8, 15)
+scale = Vector2(0.889441, 0.889441)
+polygon = PackedVector2Array(20, 10, 32, -2, 34, -17, 24, -36, 3, -40, -13, -30, -18, -14, -14, 2, 2, 12)
+
+[node name="Coquim" type="Sprite2D" parent="Ball2/fdsdf"]
+position = Vector2(1.12431, -6.74582)
+scale = Vector2(0.127473, 0.127473)
+texture = ExtResource("5_2m5dg")
+
+[node name="Ball3" type="RigidBody2D" parent="." groups=["ball"]]
+z_index = 5
+z_as_relative = false
+position = Vector2(60, -195)
+collision_layer = 3
+collision_mask = 3
+mass = 0.952
+physics_material_override = SubResource("PhysicsMaterial_6ls6l")
+gravity_scale = 0.1
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball3"]
+light_mask = 3
+visibility_layer = 0
+shape = SubResource("CircleShape2D_gjn0s")
+
+[node name="Cherry" type="Sprite2D" parent="Ball3"]
+position = Vector2(-5, 8)
+scale = Vector2(0.195238, 0.195238)
+texture = ExtResource("5_2cx01")
+
+[node name="fdsdf" type="Polygon2D" parent="Ball3"]
+visible = false
+clip_children = 1
+position = Vector2(-8, 15)
+scale = Vector2(0.889441, 0.889441)
+polygon = PackedVector2Array(20, 10, 32, -2, 34, -17, 24, -36, 3, -40, -13, -30, -18, -14, -14, 2, 2, 12)
+
+[node name="Coquim" type="Sprite2D" parent="Ball3/fdsdf"]
+position = Vector2(1.12431, -6.74582)
+scale = Vector2(0.127473, 0.127473)
+texture = ExtResource("5_2m5dg")
+
+[node name="Ball4" type="RigidBody2D" parent="." groups=["ball"]]
+z_index = 5
+z_as_relative = false
+position = Vector2(290, -303)
+collision_layer = 3
+collision_mask = 3
+mass = 0.952
+physics_material_override = SubResource("PhysicsMaterial_6ls6l")
+gravity_scale = 0.1
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball4"]
+light_mask = 3
+visibility_layer = 0
+shape = SubResource("CircleShape2D_gjn0s")
+
+[node name="Cherry" type="Sprite2D" parent="Ball4"]
+position = Vector2(-5, 8)
+scale = Vector2(0.195238, 0.195238)
+texture = ExtResource("5_2cx01")
+
+[node name="fdsdf" type="Polygon2D" parent="Ball4"]
+visible = false
+clip_children = 1
+position = Vector2(-8, 15)
+scale = Vector2(0.889441, 0.889441)
+polygon = PackedVector2Array(20, 10, 32, -2, 34, -17, 24, -36, 3, -40, -13, -30, -18, -14, -14, 2, 2, 12)
+
+[node name="Coquim" type="Sprite2D" parent="Ball4/fdsdf"]
+position = Vector2(1.12431, -6.74582)
+scale = Vector2(0.127473, 0.127473)
+texture = ExtResource("5_2m5dg")
+
+[node name="Ball5" type="RigidBody2D" parent="." groups=["ball"]]
+z_index = 5
+z_as_relative = false
+position = Vector2(159, -429)
+collision_layer = 3
+collision_mask = 3
+mass = 0.952
+physics_material_override = SubResource("PhysicsMaterial_6ls6l")
+gravity_scale = 0.1
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball5"]
+light_mask = 3
+visibility_layer = 0
+shape = SubResource("CircleShape2D_gjn0s")
+
+[node name="Cherry" type="Sprite2D" parent="Ball5"]
+position = Vector2(-5, 8)
+scale = Vector2(0.195238, 0.195238)
+texture = ExtResource("5_2cx01")
+
+[node name="fdsdf" type="Polygon2D" parent="Ball5"]
+visible = false
+clip_children = 1
+position = Vector2(-8, 15)
+scale = Vector2(0.889441, 0.889441)
+polygon = PackedVector2Array(20, 10, 32, -2, 34, -17, 24, -36, 3, -40, -13, -30, -18, -14, -14, 2, 2, 12)
+
+[node name="Coquim" type="Sprite2D" parent="Ball5/fdsdf"]
+position = Vector2(1.12431, -6.74582)
+scale = Vector2(0.127473, 0.127473)
+texture = ExtResource("5_2m5dg")
+
+[node name="Ball6" type="RigidBody2D" parent="." groups=["ball"]]
+z_index = 5
+z_as_relative = false
+position = Vector2(447, -450)
+collision_layer = 3
+collision_mask = 3
+mass = 0.952
+physics_material_override = SubResource("PhysicsMaterial_6ls6l")
+gravity_scale = 0.1
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball6"]
+light_mask = 3
+visibility_layer = 0
+shape = SubResource("CircleShape2D_gjn0s")
+
+[node name="Cherry" type="Sprite2D" parent="Ball6"]
+position = Vector2(-5, 8)
+scale = Vector2(0.195238, 0.195238)
+texture = ExtResource("5_2cx01")
+
+[node name="fdsdf" type="Polygon2D" parent="Ball6"]
+visible = false
+clip_children = 1
+position = Vector2(-8, 15)
+scale = Vector2(0.889441, 0.889441)
+polygon = PackedVector2Array(20, 10, 32, -2, 34, -17, 24, -36, 3, -40, -13, -30, -18, -14, -14, 2, 2, 12)
+
+[node name="Coquim" type="Sprite2D" parent="Ball6/fdsdf"]
+position = Vector2(1.12431, -6.74582)
+scale = Vector2(0.127473, 0.127473)
+texture = ExtResource("5_2m5dg")
+
+[node name="Ball7" type="RigidBody2D" parent="." groups=["ball"]]
+z_index = 5
+z_as_relative = false
+position = Vector2(284, -588)
+collision_layer = 3
+collision_mask = 3
+mass = 0.952
+physics_material_override = SubResource("PhysicsMaterial_6ls6l")
+gravity_scale = 0.1
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball7"]
+light_mask = 3
+visibility_layer = 0
+shape = SubResource("CircleShape2D_gjn0s")
+
+[node name="Cherry" type="Sprite2D" parent="Ball7"]
+position = Vector2(-5, 8)
+scale = Vector2(0.195238, 0.195238)
+texture = ExtResource("5_2cx01")
+
+[node name="fdsdf" type="Polygon2D" parent="Ball7"]
+visible = false
+clip_children = 1
+position = Vector2(-8, 15)
+scale = Vector2(0.889441, 0.889441)
+polygon = PackedVector2Array(20, 10, 32, -2, 34, -17, 24, -36, 3, -40, -13, -30, -18, -14, -14, 2, 2, 12)
+
+[node name="Coquim" type="Sprite2D" parent="Ball7/fdsdf"]
+position = Vector2(1.12431, -6.74582)
+scale = Vector2(0.127473, 0.127473)
+texture = ExtResource("5_2m5dg")
+
+[node name="Ball8" type="RigidBody2D" parent="." groups=["ball"]]
+z_index = 5
+z_as_relative = false
+position = Vector2(469, -165)
+collision_layer = 3
+collision_mask = 3
+mass = 0.952
+physics_material_override = SubResource("PhysicsMaterial_6ls6l")
+gravity_scale = 0.1
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball8"]
+light_mask = 3
+visibility_layer = 0
+shape = SubResource("CircleShape2D_gjn0s")
+
+[node name="Cherry" type="Sprite2D" parent="Ball8"]
+position = Vector2(-5, 8)
+scale = Vector2(0.195238, 0.195238)
+texture = ExtResource("5_2cx01")
+
+[node name="fdsdf" type="Polygon2D" parent="Ball8"]
+visible = false
+clip_children = 1
+position = Vector2(-8, 15)
+scale = Vector2(0.889441, 0.889441)
+polygon = PackedVector2Array(20, 10, 32, -2, 34, -17, 24, -36, 3, -40, -13, -30, -18, -14, -14, 2, 2, 12)
+
+[node name="Coquim" type="Sprite2D" parent="Ball8/fdsdf"]
+position = Vector2(1.12431, -6.74582)
+scale = Vector2(0.127473, 0.127473)
+texture = ExtResource("5_2m5dg")
+
+[node name="Ball9" type="RigidBody2D" parent="." groups=["ball"]]
+z_index = 5
+z_as_relative = false
+position = Vector2(422, 96)
+collision_layer = 3
+collision_mask = 3
+mass = 0.952
+physics_material_override = SubResource("PhysicsMaterial_6ls6l")
+gravity_scale = 0.1
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball9"]
+light_mask = 3
+visibility_layer = 0
+shape = SubResource("CircleShape2D_gjn0s")
+
+[node name="Cherry" type="Sprite2D" parent="Ball9"]
+position = Vector2(-5, 8)
+scale = Vector2(0.195238, 0.195238)
+texture = ExtResource("5_2cx01")
+
+[node name="fdsdf" type="Polygon2D" parent="Ball9"]
+visible = false
+clip_children = 1
+position = Vector2(-8, 15)
+scale = Vector2(0.889441, 0.889441)
+polygon = PackedVector2Array(20, 10, 32, -2, 34, -17, 24, -36, 3, -40, -13, -30, -18, -14, -14, 2, 2, 12)
+
+[node name="Coquim" type="Sprite2D" parent="Ball9/fdsdf"]
+position = Vector2(1.12431, -6.74582)
+scale = Vector2(0.127473, 0.127473)
+texture = ExtResource("5_2m5dg")
+
+[node name="Ball10" type="RigidBody2D" parent="." groups=["ball"]]
+z_index = 5
+z_as_relative = false
+position = Vector2(243, 189)
+collision_layer = 3
+collision_mask = 3
+mass = 0.952
+physics_material_override = SubResource("PhysicsMaterial_6ls6l")
+gravity_scale = 0.1
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball10"]
+light_mask = 3
+visibility_layer = 0
+shape = SubResource("CircleShape2D_gjn0s")
+
+[node name="Cherry" type="Sprite2D" parent="Ball10"]
+position = Vector2(-5, 8)
+scale = Vector2(0.195238, 0.195238)
+texture = ExtResource("5_2cx01")
+
+[node name="fdsdf" type="Polygon2D" parent="Ball10"]
+visible = false
+clip_children = 1
+position = Vector2(-8, 15)
+scale = Vector2(0.889441, 0.889441)
+polygon = PackedVector2Array(20, 10, 32, -2, 34, -17, 24, -36, 3, -40, -13, -30, -18, -14, -14, 2, 2, 12)
+
+[node name="Coquim" type="Sprite2D" parent="Ball10/fdsdf"]
+position = Vector2(1.12431, -6.74582)
+scale = Vector2(0.127473, 0.127473)
+texture = ExtResource("5_2m5dg")
+
+[node name="Mcrabmenu" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-187, 141)
+stream = ExtResource("7_ikas8")
+autoplay = true
+
+[node name="clicktap" type="Node2D" parent="."]
+position = Vector2(267, 777)
+
+[node name="ColorRect" type="ColorRect" parent="clicktap"]
+clip_children = 1
+offset_left = -185.0
+offset_top = -70.0
+offset_right = -145.0
+offset_bottom = -30.0
+scale = Vector2(11.4179, 2.06598)
+
+[node name="ColorRect" type="ColorRect" parent="clicktap/ColorRect"]
+layout_mode = 0
+offset_left = 4.72941
+offset_top = 4.35629
+offset_right = 44.7294
+offset_bottom = 44.3563
+scale = Vector2(0.624073, 1)
+color = Color(0.455667, 0.29, 1, 1)
+
+[node name="ClickTap" type="Sprite2D" parent="clicktap/ColorRect"]
+position = Vector2(17.954, 359.454)
+scale = Vector2(0.065854, 0.363951)
+texture = ExtResource("8_djbct")
 
 [connection signal="animation_finished" from="Sky/AnimationPlayer" to="Sky" method="_on_animation_player_animation_finished"]
-[connection signal="pressed" from="Sky/PlayButton" to="Sky" method="_on_play_button_pressed"]
-[connection signal="pressed" from="Sky/GotButton" to="Sky" method="_on_got_button_pressed"]
-[connection signal="pressed" from="Sky/GotButton" to="Sky" method="_on_button_pressed"]
+[connection signal="finished" from="Mcrabmenu" to="Sky" method="_on_mcrabmenu_finished"]

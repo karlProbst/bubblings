@@ -1,12 +1,15 @@
 extends Sprite2D
 
 var bubble_scene = preload("res://Scenes/Bubble.tscn")
+@export var clicktap:Node2D
 var growth = 0.7
 var mouse_was_pressed=false
 var StartTriggered=false
 var nBubbles=0
 var trigger=0
-var cooldown=0.1
+var cooldown=100
+var waittomusictofinish = false
+var pos = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -14,20 +17,32 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	position.y-=pos
+	if pos>0:
+		pos-=delta*8
+	else:
+		pos=0
+	clicktap.scale.x=1+(pos/5)
+	clicktap.scale.y=1+(pos/4)
+	
 	if trigger>0:
 		trigger-=delta
-	if nBubbles==1:
-		for i in 10:
+	if nBubbles==14:
+		for i in 8:
 				var window_size2 = DisplayServer.window_get_size()
 				var new_bubble = create_bubble(Vector2(randf_range(0,window_size2.x),randf_range(0,window_size2.y)),randf_range(0.2,2.0))
 				# Add the new bubble to the scene tree
 				get_parent().add_child(new_bubble)
+				
 		$AnimationPlayer.play("new_animation_4")
 		nBubbles=-1
-	
+		get_tree().change_scene_to_file("res://Scenes/Stages/Level1.tscn")
+	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		trigger=0
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		
 		if trigger<=0:
+			pos+=4.2
 			var window_size = DisplayServer.window_get_size()
 			var width = window_size.x
 			var height = window_size.y
@@ -71,4 +86,9 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		print("STARTED")
 	if anim_name=="new_animation_4":
 	
+		waittomusictofinish=true
+
+
+func _on_mcrabmenu_finished() -> void:
+	if waittomusictofinish:
 		get_tree().change_scene_to_file("res://Scenes/Stages/Level1.tscn")
