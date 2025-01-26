@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://07c7wnt7vdll"]
+[gd_scene load_steps=18 format=3 uid="uid://07c7wnt7vdll"]
 
 [ext_resource type="Texture2D" uid="uid://bi2m5egvtx4nn" path="res://Assets/Images/opening/Sky.png" id="1_d4ocg"]
 [ext_resource type="Texture2D" uid="uid://camxoooubjhdt" path="res://Assets/Images/opening/text.png" id="2_dyb2f"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://5wx1jom1euav" path="res://Scenes/pombo_da_praca.tscn" id="4_70typ"]
 [ext_resource type="Texture2D" uid="uid://c2n6qdfg0i23s" path="res://Assets/Images/coquim.png" id="5_2m5dg"]
 [ext_resource type="AudioStream" uid="uid://tb218hr4u014" path="res://gelatina.mp3" id="6_xd4n1"]
+[ext_resource type="Texture2D" uid="uid://i6spb5gwo8j8" path="res://Assets/Images/cerejaa.png" id="7_lsgwj"]
 
 [sub_resource type="Animation" id="Animation_bbrxk"]
 length = 0.001
@@ -262,6 +263,10 @@ texture = ExtResource("5_2m5dg")
 [node name="Gelatina" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-312, 549)
 stream = ExtResource("6_xd4n1")
+
+[node name="Cerejaa" type="Sprite2D" parent="."]
+position = Vector2(369, 233)
+texture = ExtResource("7_lsgwj")
 
 [connection signal="animation_finished" from="Sky/AnimationPlayer" to="Sky" method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="Sky/PlayButton" to="Sky" method="_on_play_button_pressed"]

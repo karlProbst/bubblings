@@ -16,7 +16,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if trigger>0:
 		trigger-=delta
-	if nBubbles>=100:
+	if nBubbles==1:
 		for i in 10:
 				var window_size2 = DisplayServer.window_get_size()
 				var new_bubble = create_bubble(Vector2(randf_range(0,window_size2.x),randf_range(0,window_size2.y)),randf_range(0.2,2.0))

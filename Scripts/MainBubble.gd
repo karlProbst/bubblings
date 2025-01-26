@@ -146,7 +146,7 @@ func subdivide_polygon(vertices: Array, subdivisions: int, bulge_factor: float =
 
 
 func _on_center_body_entered(body: Node) -> void:
-	if not body.is_in_group("ball"):
+	if not body.is_in_group("ball") and not body.is_in_group("cherry"):
 		exploded=true
 
 

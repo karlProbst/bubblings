@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dsvbuala2ohc1"]
+[gd_scene load_steps=22 format=3 uid="uid://dsvbuala2ohc1"]
 
 [ext_resource type="Texture2D" uid="uid://cqm8wne4spw2p" path="res://Assets/Images/Diver/Untitled_Artwork-8.png" id="1_14akg"]
 [ext_resource type="Texture2D" uid="uid://cwa5o7hw5jki3" path="res://Assets/Images/Diver/Untitled_Artwork-9.png" id="2_qih8g"]
@@ -29,69 +29,6 @@ height = 449.062
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ewue1"]
 radius = 14.0357
-
-[sub_resource type="Animation" id="Animation_wxyse"]
-resource_name = "varadown"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ChestAndLeg/bracoVara:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.166667, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.314159, 0.376991, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ChestAndLeg/bracoVara:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(14, -61)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ChestAndLeg/ChestLeg:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0628319, 0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("ChestAndLeg/bracoesquerdo:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.598648, 0.158895]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("ChestAndLeg/bracoesquerdo:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(45.81, -3), Vector2(67, -11)]
-}
 
 [sub_resource type="Animation" id="Animation_183ds"]
 length = 0.001
@@ -165,12 +102,36 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-63.855, -13.945)]
+"values": [Vector2(66.3788, 45.7258)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ChestAndLeg/bracoVara/vara:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ChestAndLeg/bracoVara:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(14, -61)]
 }
 
 [sub_resource type="Animation" id="Animation_a50yi"]
 resource_name = "reeling"
-length = 3.0
+length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -178,10 +139,10 @@ tracks/0/path = NodePath("ChestAndLeg/bracoVara:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.533333, 1.1, 1.63333, 1.86667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.3, 0.533333, 1.1, 1.63333, 1.86667, 2.43333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [-0.10821, 0.268781, 0.331613, 0.236818, -0.602139, -2.04727]
+"values": [-0.10821, 0.268781, 0.331613, 0.236818, -0.602139, -2.04727, 0.0890118]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -190,10 +151,10 @@ tracks/1/path = NodePath("ChestAndLeg/bracoesquerdo:rotation")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.3, 0.533333, 0.566667, 1.1, 1.63333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.3, 0.533333, 0.566667, 1.1, 1.63333, 1.96667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.598648, 0.66148, 0.602162, 0.537941, -0.158825]
+"values": [0.598648, 0.66148, 0.602162, 0.537941, -0.158825, 0.218166]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -202,10 +163,10 @@ tracks/2/path = NodePath("ChestAndLeg/bracoesquerdo:position")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.3, 0.566667, 1.1, 1.63333),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0.3, 0.566667, 1.1, 1.63333, 1.96667, 2.46667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(45.81, -3), Vector2(48.356, -5.461), Vector2(49.8569, -6.78875), Vector2(73.05, -26.955)]
+"values": [Vector2(45.81, -3), Vector2(48.356, -5.461), Vector2(49.8569, -6.78875), Vector2(73.05, -26.955), Vector2(66, -4.00001), Vector2(47, -1.99999)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -214,10 +175,10 @@ tracks/3/path = NodePath("ChestAndLeg/bracoVara:position")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1.86667),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(1.86667, 2.2, 2.43333),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(14, -61)]
+"values": [Vector2(14, -61), Vector2(14, -61), Vector2(21.435, -61)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -243,10 +204,186 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector2(72.195, 34.71), Vector2(72.195, 34.71), Vector2(-63.855, -13.945)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ChestAndLeg/bracoVara/vara:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(2.13333, 2.23333, 2.46667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, false]
+}
+
+[sub_resource type="Animation" id="Animation_wxyse"]
+resource_name = "varadown"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ChestAndLeg/bracoVara:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.314159, 0.376991, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ChestAndLeg/bracoVara:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(14, -61)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ChestAndLeg/ChestLeg:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0628319, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ChestAndLeg/bracoesquerdo:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.598648, 0.158895]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ChestAndLeg/bracoesquerdo:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(45.81, -3), Vector2(67, -11)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ChestAndLeg/bracoVara/vara:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_rsihj"]
+resource_name = "reeled"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ChestAndLeg/bracoVara:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.866667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.109956, 0.0890118]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ChestAndLeg/bracoesquerdo:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.598648, 0.66148]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ChestAndLeg/bracoesquerdo:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(43.15, -2), Vector2(43.33, -2)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ChestAndLeg/bracoVara:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.866667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(17.73, -61), Vector2(21.435, -61)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ChestAndLeg/bracoVara/vara:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ChestAndLeg/bracoVara/vara:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ChestAndLeg/bracoVara/vara:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.0333333, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2h1l8"]
 _data = {
 "RESET": SubResource("Animation_183ds"),
+"reeled": SubResource("Animation_rsihj"),
 "reeling": SubResource("Animation_a50yi"),
 "varadown": SubResource("Animation_wxyse")
 }
@@ -292,13 +429,12 @@ lock_rotation = true
 freeze = true
 
 [node name="bracoesquerdo" type="Sprite2D" parent="ChestAndLeg"]
-position = Vector2(46, -3)
-rotation = 0.598648
+position = Vector2(67, -11)
+rotation = 0.158895
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("8_0w1v2")
 
 [node name="ChestLeg" type="Node2D" parent="ChestAndLeg"]
-rotation = 0.0628319
 
 [node name="chest" type="Sprite2D" parent="ChestAndLeg/ChestLeg"]
 position = Vector2(76, -16)
@@ -312,11 +448,9 @@ texture = ExtResource("4_cabom")
 
 [node name="bracoVara" type="Node2D" parent="ChestAndLeg"]
 position = Vector2(14, -61)
-rotation = 0.314159
 
 [node name="vara" type="Sprite2D" parent="ChestAndLeg/bracoVara"]
-position = Vector2(91.1303, 34.5291)
-rotation = -0.188496
+position = Vector2(72.195, 34.71)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("9_wocu0")
 
@@ -377,11 +511,12 @@ stiffness = 1.7
 damping = 0.02
 
 [node name="anzol" type="RigidBody2D" parent="." groups=["anzol"]]
-position = Vector2(225, -210)
+position = Vector2(225, -218)
 mass = 0.287
 gravity_scale = 3.766
 center_of_mass_mode = 1
 center_of_mass = Vector2(0, 20)
+freeze_mode = 1
 
 [node name="anzol" type="Sprite2D" parent="anzol"]
 position = Vector2(-105, -98)
@@ -405,3 +540,4 @@ libraries = {
 autoplay = "varadown"
 
 [connection signal="body_entered" from="Head" to="Head" method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="Head" method="_on_animation_player_animation_finished"]

@@ -6,6 +6,7 @@ extends RigidBody2D
 var diaxo=0
 var anzol_stiffness=0
 var ganchando=false
+var stateGancho=0
 @onready var anzolnode = get_parent().get_node("anzolpin")
 func _ready():
 	anzol_stiffness=anzolnode.stiffness
@@ -15,15 +16,21 @@ func _process(delta):
 	
 	if not ganchando:
 		if anzolnode.stiffness<anzol_stiffness:
-			anzolnode.stiffness+=delta/2
+			anzolnode.stiffness+=delta/3
 		if anzolnode.stiffness<0:
 			anzolnode.stiffness=0
 	else:
 		if anzolnode.stiffness<16:
-			anzolnode.stiffness+=delta
+			get_parent().get_node("AnimationPlayer").play("varadown")
+			get_parent().get_node("AnimationPlayer").speed_scale=2
+			anzolnode.stiffness+=delta*3
 		else:
-			pass
-		
+			if stateGancho==0:
+				get_parent().get_node("AnimationPlayer").speed_scale=1
+				get_parent().get_node("AnimationPlayer").play("reeling")
+				stateGancho=1
+				
+			
 func play_sound_effect(sound: AudioStream, position: Vector2) -> void:
 	# Create a new AudioStreamPlayer2D instance
 	var sound_player = AudioStreamPlayer2D.new()
@@ -43,13 +50,24 @@ func play_sound_effect(sound: AudioStream, position: Vector2) -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if body.name=="Center":
-		get_parent().get_node("anzolpin").stiffness-=0.3
-		get_parent().get_node("AnimationPlayer").play("varadown")
-		get_parent().get_node("AnimationPlayer").seek(0,true)
+		if !ganchando:
+			get_parent().get_node("anzolpin").stiffness-=0.4
+			get_parent().get_node("AnimationPlayer").play("varadown")
+			get_parent().get_node("AnimationPlayer").seek(0,true)
 	if body.is_in_group("ball"):
-		get_parent().get_node("anzolpin").stiffness-=0.8
-		print(body.linear_velocity)
+		
 		play_sound_effect(plin_sound, position)
 		if diaxo<=0:
 			play_sound_effect(diaxo_sound, position)
 			diaxo=40
+		if !ganchando:
+			get_parent().get_node("anzolpin").stiffness-=0.9
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name=="reeling":
+		get_parent().get_node("AnimationPlayer").play("reeled")
+		get_parent().get_node("anzol").position = Vector2(90, -45)
+		get_parent().get_node("anzol").freeze = true
+		get_parent().get_node("anzol").position = Vector2(90, -45)
+		get_parent().get_node("anzolpin").position = Vector2(90, -45)

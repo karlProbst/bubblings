@@ -49,7 +49,8 @@ fill_to = Vector2(0.816239, 0.235043)
 script = ExtResource("1_okrg6")
 
 [node name="Center" type="RigidBody2D" parent="." groups=["bubble"]]
-collision_layer = 3
+collision_layer = 11
+collision_mask = 9
 mass = 3.587
 physics_material_override = SubResource("PhysicsMaterial_1iffs")
 gravity_scale = -0.47
@@ -139,41 +140,49 @@ softness = 12.2
 [node name="Point1" parent="." instance=ExtResource("1_0nn2w")]
 position = Vector2(0, -64)
 rotation = 1.57079
-collision_mask = 3
+collision_layer = 11
+collision_mask = 9
 gravity_scale = 1.0
 
 [node name="Point2" parent="." instance=ExtResource("1_0nn2w")]
 position = Vector2(40, -40)
 rotation = -0.785397
-collision_mask = 3
+collision_layer = 11
+collision_mask = 9
 
 [node name="Point3" parent="." instance=ExtResource("1_0nn2w")]
 position = Vector2(64, 0)
-collision_mask = 3
+collision_layer = 11
+collision_mask = 9
 
 [node name="Point4" parent="." instance=ExtResource("1_0nn2w")]
 position = Vector2(40, 40)
 rotation = 0.785397
-collision_mask = 3
+collision_layer = 11
+collision_mask = 9
 
 [node name="Point5" parent="." instance=ExtResource("1_0nn2w")]
 position = Vector2(0, 64)
 rotation = 1.57079
-collision_mask = 3
+collision_layer = 11
+collision_mask = 9
 
 [node name="Point6" parent="." instance=ExtResource("1_0nn2w")]
 position = Vector2(-40, 40)
 rotation = -0.785397
-collision_mask = 3
+collision_layer = 11
+collision_mask = 9
 
 [node name="Point7" parent="." instance=ExtResource("1_0nn2w")]
 position = Vector2(-64, 0)
-collision_mask = 3
+collision_layer = 11
+collision_mask = 9
 
 [node name="Point8" parent="." instance=ExtResource("1_0nn2w")]
 position = Vector2(-40, -40)
 rotation = 0.785397
-collision_mask = 3
+collision_layer = 11
+collision_mask = 9
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
 visible = false
