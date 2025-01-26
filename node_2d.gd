@@ -6,24 +6,43 @@ var reset_key: String = "r"  # Replace "r" with the desired key
 var is_muted = false
 var growth = 0
 var mouse_was_pressed=false
+var metralha = 0
+var trigger=0
+var cooldown=0.1
+
+var cherrycooldown=3
+
+@onready var cherry = get_node("CherryRed")
 # Called every frame
 func _process(delta: float) -> void:
-	
-	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		
-		if mouse_was_pressed:
-			var window_size = DisplayServer.window_get_size()
-			var width = window_size.x
-			var height = window_size.y
-			var mouse_position = get_global_mouse_position()
+	var window_size = DisplayServer.window_get_size()
+	var width = window_size.x
+	var height = window_size.y
 
+	if cherrycooldown>0:
+		cherrycooldown-=delta
+	else:
+		cherry.global_transform.origin=Vector2(randf_range(35,520),get_node("Camera2D").position.y+height)
+		cherrycooldown=30
 		
-			# Instantiate the scene
-			var new_bubble = create_bubble(mouse_position,growth)
-			# Add the new bubble to the scene tree
-			add_child(new_bubble)
-		mouse_was_pressed = false
-		growth=0
+		
+	if metralha>0:
+		metralha-=delta
+		cooldown=0.091
+	else:
+		cooldown=999
+	if trigger>0:
+		trigger-=delta
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		if trigger<=0:
+			if mouse_was_pressed:
+
+				var mouse_position = get_global_mouse_position()
+				var new_bubble = create_bubble(mouse_position,1)
+				add_child(new_bubble)
+				trigger=cooldown
+	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		trigger=0
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		mouse_was_pressed = true
 		growth+=delta
